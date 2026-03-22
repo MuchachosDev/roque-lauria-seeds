@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="seed_hibrid_action" model="ir.actions.act_window">
+        <field name="name">Hibrido</field>
+        <field name="res_model">seed.hibrid</field>
+        <field name="view_mode">form, list</field>
+    </record>
+
+    <record id="seed_hibrid_form_view" model="ir.ui.view">
+        <field name="name">seed.hibrid.from</field>
+        <field name="model">seed.hibrid</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="hibrid_code" />
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="seed_hibrid_list_view" model="ir.ui.view">
+        <field name="name">seed.hibrid.list</field>
+        <field name="model">seed.hibrid</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="hibrid_code" />
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+</odoo>

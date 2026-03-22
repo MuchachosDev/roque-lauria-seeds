@@ -1,4 +1,9 @@
 <?xml version="1.0" encodig="utf-8"?>
 <odoo>
-  <!-- menu root, menues and submenues items -->
+  <menuitem id="seeds_root"
+    name="Semillas" />
+
+  <menuitem id="seed_hibrid_menu_item"
+    name="Hibridos"
+    action="seed_hibrid_action" parent="seeds_root" />
 </odoo>
