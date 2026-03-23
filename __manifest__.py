@@ -20,7 +20,7 @@
         "views/menu.xml",
         # Pre-loaded data
         "data/sequence.xml",
-        "data/vegetable.xml",
-        "data/seed_experimental_result_template.xml",
+        #"data/vegetable.xml",
+        #"data/seed_experimental_result_template.xml",
     ],
 }
