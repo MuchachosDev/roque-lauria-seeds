@@ -1,10 +1,25 @@
 {
     "name": "Seeds",
-    "category": "Production",
+    "category": "Uncategorized",
     "author": "MuchachosDev",
     "application": True,
     "version": "19.0.1.0.0",
     "summary": "A small and simple module to manage and track seed tests",
     "depends": ["base", "mail"],
-    "data": ["security/security.xml", "security/ir.model.access.csv"],
+    "data": [
+        # Security
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        # Views
+        "views/seed_arrival_order_view.xml",
+        "views/seed_company_view.xml",
+        "views/seed_deperture_order_view.xml",
+        "views/seed_hibrid_view.xml",
+        "views/seed_result_order_view.xml",
+        "views/seed_vegetable_view.xml",
+        "views/menu.xml",
+        # Pre-loaded data
+        "data/vegetable.xml",
+        "data/seed_experimental_result_template.xml",
+    ],
 }

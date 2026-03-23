@@ -1,0 +1,10 @@
+<? xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="letuce_experimental_result_template" model="seed.experimental.result.template">
+        <field name="name">Lechuga</field>
+        <field name="vegetable_id" ref="seeds.vegetable_batavia_letuce"/>
+        <field name="template" type="html">
+            <!-- HTML -->
+        </field>
+    </record>
+</odoo>

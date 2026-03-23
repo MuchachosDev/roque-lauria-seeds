@@ -1,10 +1,11 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class SeedDepertureOrder(models.Model):
     _name = "seed.deperture.order"
     _description = "Deperture orders"
 
+    order_number = fields.Char("Orden de salida N°", compute="_compute_order_number")
     deperture_date = fields.Date(string="Fecha de envío")
     arrival_date = fields.Date(string="Fecha de reepción")
     # Ver esto porque podría ser una relación con el modelo "res.partner"
@@ -14,8 +15,14 @@ class SeedDepertureOrder(models.Model):
     destinatary_city = fields.Char(string="Localidad del destinatario")
     batch = fields.Char("Batch")
     observation = fields.Html(string="Observaciones")
-    items_ids = fields.One2many(
+    item_ids = fields.One2many(
         string="Contenido de la orden",
         comodel_name="seed.deperture.order.item",
         reverse_name="deperture_order_id",
     )
+
+    @api.depends("id")
+    def _compute_order_number(self):
+        for record in self:
+            if record.id:
+                record.order_number = str(record.id).zfill(10)

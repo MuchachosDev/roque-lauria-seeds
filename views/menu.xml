@@ -1,9 +1,55 @@
-<?xml version="1.0" encodig="utf-8"?>
+<? xml version="1.0" encoding="utf-8" ?>
 <odoo>
-  <menuitem id="seeds_root"
-    name="Semillas" />
-
-  <menuitem id="seed_hibrid_menu_item"
-    name="Hibridos"
-    action="seed_hibrid_action" parent="seeds_root" />
+    <menuitem
+        id="seeds_menu_root"
+        name="Semillas"
+        sequence="10"/>
+    <!-- Top bar menus -->
+    <menuitem
+        id="company_menu"
+        name="Empresa"
+        action="seed_company_action"
+        parent="seeds_menu_root"
+        sequence="20"/>
+    <menuitem
+        id="general_seed_menu"
+        name="Semillas"
+        parent="seeds_menu_root"
+        sequence="30"/>
+    <menuitem
+        id="general_order_menu"
+        name="Ordenes"
+        parent="seeds_menu_root"
+        sequence="40"/>
+    <!-- Menu items -->
+    <menuitem
+        id="vegetable_menu_item"
+        name="Hortalizas"
+        action="seed_vegetable_action"
+        parent="general_seed_menu"
+        sequence="10"/>
+    <menuitem
+        id="hibrid_menu_item"
+        name="Híbridos"
+        action="seed_hibrid_action"
+        parent="general_seed_menu"
+        sequence="20"/>
+    <menuitem
+        id="arrival_order_menu_item"
+        name="Ordenes de entrada"
+        action="seed_arrival_order_action"
+        parent="general_order_menu"
+        sequence="10"/>
+    <menuitem
+        id="deperture_order_menu_item"
+        name="Ordenes de salida"
+        action="seed_deperture_order_action"
+        parent="general_order_menu"
+        sequence="20"/>
+    <menuitem
+        id="result_order_menu_item"
+        name="Ordenes de resultado"
+        action="seed_result_order_action"
+        parent="general_order_menu"
+        sequence="30"/>
 </odoo>

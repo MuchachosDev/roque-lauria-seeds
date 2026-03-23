@@ -6,3 +6,6 @@ class SeedCompany(models.Model):
     _description = "Companies who send the seeds"
 
     name = fields.Char(string="Nombre")
+    arrival_order_ids = fields.One2many(
+        string="Ordenes de entrada", comodel_name="seed.arrival.order"
+    )

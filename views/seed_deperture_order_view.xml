@@ -1,0 +1,67 @@
+<? xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="seed_deperture_order_form_view" model="ir.ui.view">
+        <field name="name">seed.deperture.order.form</field>
+        <field name="model">seed.deperture.order</field>
+        <field name="arch" type="xml">
+            <form string="Orden de salida">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="order_number" string="Orden de Salida N°" />
+                        <h1>
+                            <field name="order_number" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Datos generales del envío">
+                            <field name="deperture_date"/>
+                            <field name="arrival_date"/>
+                            <field name="batch"/>
+                        </group>
+                        <group string="Datos del receptor">
+                            <field name="destinatary_name"/>
+                            <field name="destinatary_city"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Observaciones">
+                            <field name="observation"/>
+                        </page>
+                        <page string="Contenido del paquete">
+                            <field name="item_ids">
+                                <list editable="top">
+                                    <field name="hibrid_id"/>
+                                    <field name="hibrid_code"/>
+                                    <field name="vegetable"/>
+                                    <field name="amount"/>
+                                    <field name="package_type"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List view -->
+    <record id="seed_deperture_order_list_view" model="ir.ui.view">
+        <field name="name">seed.deperture.order.list</field>
+        <field name="model">seed.deperture.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="order_number"/>
+                <field name="deperture_date"/>
+                <field name="arrival_date"/>
+                <field name="destinatary_name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="seed_deperture_order_action" model="ir.actions.act_window">
+        <field name="name">Ordenes de salida</field>
+        <field name="res_model">seed.deperture.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
