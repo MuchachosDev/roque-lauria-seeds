@@ -90,7 +90,7 @@
     <!-- Aaction -->
     <record id="seed_arrival_order_action" model="ir.actions.act_window">
         <field name="name">Ordenes de entrada</field>
-        <field name="res_model">seed.arrival.model</field>
+        <field name="res_model">seed.arrival.order</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>
