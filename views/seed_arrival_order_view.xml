@@ -31,7 +31,7 @@
                             <group>
                                 <group string="Características del fruto o cabeza">
                                     <field name="fruit_shape"/>
-                                    <field name="avg_weigh"/>
+                                    <field name="avg_weight"/>
                                     <field name="fruit_colour"/>
                                     <field name="core_colour"/>
                                     <field name="peel_type"/>
