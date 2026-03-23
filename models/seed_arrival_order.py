@@ -1,3 +1,5 @@
+from email.policy import default
+
 from odoo import api, fields, models
 
 
@@ -6,7 +8,7 @@ class SeedArrivalOrder(models.Model):
     _description = "Arrival orders"
 
     order_number = fields.Char(
-        string="Orden de entrada N°", compute="_compute_order_number"
+        string="Orden de entrada N°", readonly=True, copy=False, default="Nuevo"
     )
     arrival_date = fields.Date(string="Fecha de ingreso", default=fields.Date.today)
     invoice_number = fields.Char(string="Número de factura")
@@ -49,8 +51,11 @@ class SeedArrivalOrder(models.Model):
     sanity = fields.Char(string="Sanidad")
     resistance = fields.Char(string="Resistencia y/o tolerancia")
 
-    @api.depends("id")
-    def _compute_order_number(self):
-        for record in self:
-            if record.id:
-                record.order_number = str(record.id).zfill(10)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("order_number", "Nuevo") == "Nuevo":
+                vals["order_number"] = self.env["ir.sequence"].next_by_code(
+                    "seed.arrival.order"
+                ) or "Nuevo"
+        return super().create(vals_list)

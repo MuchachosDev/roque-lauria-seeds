@@ -1,10 +1,245 @@
-<? xml version="1.0" encoding="utf-8" ?>
+<? xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="letuce_experimental_result_template" model="seed.experimental.result.template">
         <field name="name">Lechuga</field>
-        <field name="vegetable_id" ref="seeds.vegetable_batavia_letuce"/>
+        <field name="vegetable_id" ref="seeds.vegetable_batavia_lettuce" />
         <field name="template" type="html">
-            <!-- HTML -->
+            <div style="overflow-x:auto; max-width:100%;">
+                <table
+                    style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif; font-size:13px;">
+                    <thead>
+                        <tr>
+                            <th
+                                style="border:1px solid #d9d9d9; background:#f5f5f5; text-align:left; padding:8px;">
+                                Característica</th>
+                            <th
+                                style="border:1px solid #d9d9d9; background:#f5f5f5; text-align:left; padding:8px;">
+                                Valor</th>
+                            <th
+                                style="border:1px solid #d9d9d9; background:#f5f5f5; text-align:left; padding:8px;">Referencia
+                                numérica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Código en campo</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Variedad</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Fecha de evaluación</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Uniformidad de planta</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy pobre &nbsp;|&nbsp; <strong>3</strong> Pobre
+                                &nbsp;|&nbsp; <strong>5</strong> Moderado &nbsp;|&nbsp; <strong>7</strong>
+                                Bueno &nbsp;|&nbsp; <strong>9</strong> Excelente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Intensidad de color de la hoja</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy claro &nbsp;|&nbsp; <strong>3</strong> Claro
+                                &nbsp;|&nbsp; <strong>5</strong> Medio &nbsp;|&nbsp; <strong>7</strong>
+                                Oscuro &nbsp;|&nbsp; <strong>9</strong> Muy oscuro </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Brillo de hojas</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy opaco &nbsp;|&nbsp; <strong>3</strong> Opaco
+                                &nbsp;|&nbsp; <strong>5</strong> Medio &nbsp;|&nbsp; <strong>7</strong>
+                                Brillante &nbsp;|&nbsp; <strong>9</strong> Muy brillante </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Tamaño de la cabeza</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy pequeña &nbsp;|&nbsp; <strong>3</strong>
+                                Pequeña &nbsp;|&nbsp; <strong>5</strong> Mediana &nbsp;|&nbsp; <strong>
+                                7</strong> Grande &nbsp;|&nbsp; <strong>9</strong> Muy grande </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Precocidad</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy tardía &nbsp;|&nbsp; <strong>3</strong>
+                                Tardía &nbsp;|&nbsp; <strong>5</strong> Intermedia &nbsp;|&nbsp; <strong>
+                                7</strong> Temprana &nbsp;|&nbsp; <strong>9</strong> Muy temprana </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Densidad de cabeza</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy suelta &nbsp;|&nbsp; <strong>3</strong>
+                                Suelta &nbsp;|&nbsp; <strong>5</strong> Media &nbsp;|&nbsp; <strong>
+                                7</strong> Compacta &nbsp;|&nbsp; <strong>9</strong> Muy compacta </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Cierre superior</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy abierto &nbsp;|&nbsp; <strong>3</strong>
+                                Abierto &nbsp;|&nbsp; <strong>5</strong> Intermedio &nbsp;|&nbsp; <strong>
+                                7</strong> Cerrado &nbsp;|&nbsp; <strong>9</strong> Muy cerrado </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Daño por helada</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy severo &nbsp;|&nbsp; <strong>3</strong>
+                                Severo &nbsp;|&nbsp; <strong>5</strong> Moderado &nbsp;|&nbsp; <strong>
+                                7</strong> Leve &nbsp;|&nbsp; <strong>9</strong> Ausente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Top Presentation</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy mala &nbsp;|&nbsp; <strong>3</strong> Mala
+                                &nbsp;|&nbsp; <strong>5</strong> Media &nbsp;|&nbsp; <strong>7</strong>
+                                Buena &nbsp;|&nbsp; <strong>9</strong> Excelente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Tip Burn</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy severo &nbsp;|&nbsp; <strong>3</strong>
+                                Severo &nbsp;|&nbsp; <strong>5</strong> Moderado &nbsp;|&nbsp; <strong>
+                                7</strong> Leve &nbsp;|&nbsp; <strong>9</strong> Ausente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Hojas amarillas</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muchas &nbsp;|&nbsp; <strong>3</strong> Bastantes
+                                &nbsp;|&nbsp; <strong>5</strong> Moderadas &nbsp;|&nbsp; <strong>7</strong>
+                                Pocas &nbsp;|&nbsp; <strong>9</strong> Ninguna </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Pudrición basal</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy severa &nbsp;|&nbsp; <strong>3</strong>
+                                Severa &nbsp;|&nbsp; <strong>5</strong> Moderada &nbsp;|&nbsp; <strong>
+                                7</strong> Leve &nbsp;|&nbsp; <strong>9</strong> Ausente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Presentación de la base</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy mala &nbsp;|&nbsp; <strong>3</strong> Mala
+                                &nbsp;|&nbsp; <strong>5</strong> Media &nbsp;|&nbsp; <strong>7</strong>
+                                Buena &nbsp;|&nbsp; <strong>9</strong> Excelente </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Cierre de la base</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> Muy abierto &nbsp;|&nbsp; <strong>3</strong>
+                                Abierto &nbsp;|&nbsp; <strong>5</strong> Intermedio &nbsp;|&nbsp; <strong>
+                                7</strong> Cerrado &nbsp;|&nbsp; <strong>9</strong> Muy cerrado </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Estructura de las venas</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Longitud de cabeza</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;"><strong>
+                                Unidad:</strong> cm</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Peso promedio</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;"><strong>
+                                Unidad:</strong> kg</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Tip burn interno</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">
+                                <strong>1</strong> 100% afectadas &nbsp;|&nbsp; <strong>3</strong>
+                                75% afectadas &nbsp;|&nbsp; <strong>5</strong> 50% afectadas
+                                &nbsp;|&nbsp; <strong>7</strong> 25% afectadas &nbsp;|&nbsp; <strong>
+                                9</strong> Ninguna afectada </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Fortalezas</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Debilidades</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">
+                                <strong>Comentarios generales</strong>
+                            </td>
+                            <td style="border:1px solid #d9d9d9; padding:8px;">&nbsp;</td>
+                            <td style="border:1px solid #d9d9d9; padding:8px; color:#555;">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </field>
     </record>
 </odoo>

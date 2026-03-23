@@ -1,3 +1,5 @@
+from email.policy import default
+
 from odoo import api, fields, models
 
 
@@ -5,7 +7,7 @@ class SeedDepertureOrder(models.Model):
     _name = "seed.deperture.order"
     _description = "Deperture orders"
 
-    order_number = fields.Char("Orden de salida N°", compute="_compute_order_number")
+    order_number = fields.Char("Orden de salida N°", readonly=True, copy=False, default="Nuevo")
     deperture_date = fields.Date(string="Fecha de envío")
     arrival_date = fields.Date(string="Fecha de reepción")
     # Ver esto porque podría ser una relación con el modelo "res.partner"
@@ -21,8 +23,11 @@ class SeedDepertureOrder(models.Model):
         reverse_name="deperture_order_id",
     )
 
-    @api.depends("id")
-    def _compute_order_number(self):
-        for record in self:
-            if record.id:
-                record.order_number = str(record.id).zfill(10)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("order_number", "Nuevo") == "Nuevo":
+                vals["order_number"] = self.env["ir.sequence"].next_by_code(
+                    "seed.deperture.order"
+                ) or "Nuevo"
+        return super().create(vals_list)
