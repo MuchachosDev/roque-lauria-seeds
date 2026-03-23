@@ -20,7 +20,7 @@ class SeedDepertureOrder(models.Model):
     item_ids = fields.One2many(
         string="Contenido de la orden",
         comodel_name="seed.deperture.order.item",
-        reverse_name="deperture_order_id",
+        inverse_name="deperture_order_id",
     )
 
     @api.model_create_multi

@@ -19,5 +19,5 @@ class SeedResultOrder(models.Model):
     lon_coord = fields.Float(string="Longitud")
     harvest_method = fields.Char(string="Método de cosecha")
     result_order_item_ids = fields.One2many(
-        comodel_name="seed.result.order.item", reverse_name="result_order_id"
+        comodel_name="seed.result.order.item", inverse_name="result_order_id"
     )

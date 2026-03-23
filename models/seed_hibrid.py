@@ -11,12 +11,12 @@ class SeedHibrid(models.Model):
     company_id = fields.Many2one(string="Empresa", comodel_name="seed.company")
     vegetable_id = fields.Many2one(string="Hortaliza", comodel_name="seed.vegetable")
     arrival_order_ids = fields.One2many(
-        comodel_name="seed.arrival.order", reverse_name="hibrid_id"
+        comodel_name="seed.arrival.order", inverse_name="hibrid_id"
     )
     deperture_order_item_ids = fields.One2many(
-        comodel_name="seed.deperture.order.item", reverse_name="hibrid_id"
+        comodel_name="seed.deperture.order.item", inverse_name="hibrid_id"
     )
     result_order_item_ids = fields.One2many(
         comodel_name="seed.result.order.item",
-        reverse_name="hibrid_id",
+        inverse_name="hibrid_id",
     )
