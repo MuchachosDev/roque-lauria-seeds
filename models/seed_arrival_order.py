@@ -12,7 +12,7 @@ class SeedArrivalOrder(models.Model):
     )
     arrival_date = fields.Date(string="Fecha de ingreso", default=fields.Date.today)
     invoice_number = fields.Char(string="Número de factura")
-    hibrid_id = fields.Many2one(string="Híbrido")
+    hibrid_id = fields.Many2one(string="Híbrido", comodel_name="seed.hibrid")
     hibrid_name = fields.Char(string="Nombre del hibrido", related="hibrid_id.name")
     company_id = fields.Many2one(
         string="Empresa proveedora",
