@@ -29,7 +29,7 @@
     <!-- Action -->
     <record id="seed_company_action" model="ir.actions.act_window">
         <field name="name">Empresas</field>
-        <field name="res_mode">seed.company</field>
+        <field name="res_model">seed.company</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>

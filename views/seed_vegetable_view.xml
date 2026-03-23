@@ -29,7 +29,7 @@
     <!-- Action -->
     <record id="seed_vegetable_action" model="ir.actions.act_window">
         <field name="name">Hortaliza</field>
-        <field name="res_mode">seed.vegetable</field>
+        <field name="res_model">seed.vegetable</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>
