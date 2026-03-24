@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="seed_hibrid_form_view" model="ir.ui.view">
-        <field name="name">seed.hibrid.from</field>
+        <field name="name">seed.hibrid.form</field>
         <field name="model">seed.hibrid</field>
         <field name="arch" type="xml">
             <form>
