@@ -4,7 +4,7 @@
         <field name="name">seed.hibrid.form</field>
         <field name="model">seed.hibrid</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Híbrido">
                 <sheet>
                     <div class="oe_title">
                         <label for="hibrid_code" string="Código del híbrido" />
@@ -32,10 +32,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" />
-                    <field name="message_ids" />
-                </div>
+                <chatter />
             </form>
         </field>
     </record>
@@ -47,6 +44,7 @@
             <list>
                 <field name="hibrid_code" />
                 <field name="name" />
+                <field name="vegetable_id" />
             </list>
         </field>
     </record>

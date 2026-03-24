@@ -8,64 +8,61 @@
             <form string="Orden de entrada">
                 <sheet>
                     <div class="oe_title">
-                        <label for="order_number" string="Orden de Entrada N°" />
+                        <label
+                            for="order_number"
+                            string="Orden de Entrada N°"
+                        />
                         <h1>
-                            <field name="order_number" readonly="1"/>
+                            <field name="order_number" readonly="1" />
                         </h1>
                     </div>
-                    <group>
-                        <group string="Detalle general de la orden de entrada">
-                            <group string="Datos generales">
-                                <field name="arrival_date"/>
-                                <field name="invoice_number"/>
-                                <field name="amount"/>
-                            </group>
-                            <group string="Datos del híbrido">
-                                <field name="hibrid_id"/>
-                                <field name="hibrid_name" readonly="1"/>
-                                <field name="vegetable_id" readonly="1"/>
-                                <field name="company_id" readonly="1"/>
-                            </group>
+                    <group string="Detalle general de la orden de entrada">
+                        <group string="Datos generales">
+                            <field name="arrival_date" />
+                            <field name="invoice_number" />
+                            <field name="amount" />
                         </group>
-                        <group string="Datos del detalle técnico del híbrido">
-                            <group>
-                                <group string="Características del fruto o cabeza">
-                                    <field name="fruit_shape"/>
-                                    <field name="avg_weight"/>
-                                    <field name="fruit_colour"/>
-                                    <field name="core_colour"/>
-                                    <field name="peel_type"/>
-                                    <field name="peel_width"/>
-                                    <field name="brix_degrees"/>
-                                </group>
-                                <group string="Características de la planta">
-                                    <field name="vegetative_development"/>
-                                    <field name="cycle"/>
-                                    <field name="knots"/>
-                                    <field name="plant_quality"/>
-                                    <field name="neck_quality"/>
-                                    <field name="leave_type"/>
-                                    <field name="leaves_color"/>
-                                    <field name="leaves_coverage"/>
-                                </group>
-                            </group>
-                            <group>
-                                <group string="Post-cosecha y comercialización">
-                                    <field name="uniformity"/>
-                                    <field name="transport_behaviour"/>
-                                    <field name="post_harvesting"/>
-                                    <field name="production"/>
-                                </group>
-                                <group string="Fitofortaleza">
-                                    <field name="sanity"/>
-                                    <field name="resistance"/>
-                                </group>
-                            </group>
+                        <group string="Datos del híbrido">
+                            <field name="hibrid_id" />
+                            <field name="hibrid_name" readonly="1" />
+                            <field name="vegetable_id" readonly="1" />
+                            <field name="company_id" readonly="1" />
+                        </group>
+                    </group>
+                    <group string="Datos del detalle técnico del híbrido">
+                        <group string="Características del fruto o cabeza">
+                            <field name="fruit_shape" />
+                            <field name="avg_weight" />
+                            <field name="fruit_colour" />
+                            <field name="core_colour" />
+                            <field name="peel_type" />
+                            <field name="peel_width" />
+                            <field name="brix_degrees" />
+                        </group>
+                        <group string="Características de la planta">
+                            <field name="vegetative_development" />
+                            <field name="cycle" />
+                            <field name="knots" />
+                            <field name="plant_quality" />
+                            <field name="neck_quality" />
+                            <field name="leave_type" />
+                            <field name="leaves_color" />
+                            <field name="leaves_coverage" />
+                        </group>
+                        <group string="Post-cosecha y comercialización">
+                            <field name="uniformity" />
+                            <field name="transport_behaviour" />
+                            <field name="post_harvesting" />
+                            <field name="production" />
+                        </group>
+                        <group string="Fitofortaleza">
+                            <field name="sanity" />
+                            <field name="resistance" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Observaciones">
-                            <field name="observation"/>
+                            <field name="observation" />
                         </page>
                     </notebook>
                 </sheet>
@@ -79,10 +76,10 @@
         <field name="model">seed.arrival.order</field>
         <field name="arch" type="xml">
             <list>
-                <field name="order_number"/>
-                <field name="arrival_date"/>
-                <field name="company_id"/>
-                <field name="hibrid_id"/>
+                <field name="order_number" />
+                <field name="arrival_date" />
+                <field name="company_id" />
+                <field name="hibrid_id" />
             </list>
         </field>
     </record>
