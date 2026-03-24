@@ -1,1 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_seed_company,access_seed_company,model_seed_company,base.group_user,1,1,1,1
+access_seed_hibrid,access_seed_hibrid,model_seed_hibrid,base.group_user,1,1,1,1
+access_seed_vegetable,access_seed_vegetable,model_seed_vegetable,base.group_user,1,1,1,1
+access_seed_arrival_order,access_seed_arrival_order,model_seed_arrival_order,base.group_user,1,1,1,1
+access_seed_deperture_order,access_seed_deperture_order,model_seed_deperture_order,base.group_user,1,1,1,1
+access_seed_deperture_order_item,access_seed_deperture_order_item,model_seed_deperture_order_item,base.group_user,1,1,1,1
+access_seed_result_order,access_seed_result_order,model_seed_result_order,base.group_user,1,1,1,1
+access_seed_result_order_item,access_seed_result_order_item,model_seed_result_order_item,base.group_user,1,1,1,1
+access_seed_experiment_result_template,access_seed_experiment_result_template,model_seed_experiment_result_template,base.group_user,1,1,1,1
