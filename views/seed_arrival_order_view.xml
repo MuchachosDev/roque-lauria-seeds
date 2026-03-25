@@ -8,10 +8,7 @@
             <form string="Orden de entrada">
                 <sheet>
                     <div class="oe_title">
-                        <label
-                            for="order_number"
-                            string="Orden de Entrada N°"
-                        />
+                        <label for="order_number" string="Orden de entrada" />
                         <h1>
                             <field name="order_number" readonly="1" />
                         </h1>

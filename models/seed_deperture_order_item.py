@@ -3,7 +3,7 @@ from odoo import fields, models
 
 class SeedDepertureOrderItem(models.Model):
     _name = "seed.deperture.order.item"
-    _description = "Deperture order item"
+    _description = "Deperture order items"
 
     vegetable = fields.Char(string="Hortaliza", related="hibrid_id.vegetable_id.name")
     hibrid_code = fields.Char(

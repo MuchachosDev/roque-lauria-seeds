@@ -7,34 +7,34 @@
             <form string="Orden de salida">
                 <sheet>
                     <div class="oe_title">
-                        <label for="order_number" string="Orden de Salida N°" />
+                        <label for="order_number" string="Orden de salida" />
                         <h1>
-                            <field name="order_number" readonly="1"/>
+                            <field name="order_number" readonly="1" />
                         </h1>
                     </div>
                     <group>
                         <group string="Datos generales del envío">
-                            <field name="deperture_date"/>
-                            <field name="arrival_date"/>
-                            <field name="batch"/>
+                            <field name="deperture_date" />
+                            <field name="arrival_date" />
+                            <field name="batch" />
                         </group>
                         <group string="Datos del receptor">
-                            <field name="destinatary_name"/>
-                            <field name="destinatary_city"/>
+                            <field name="destinatary_name" />
+                            <field name="destinatary_city" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Observaciones">
-                            <field name="observation"/>
+                            <field name="observation" />
                         </page>
                         <page string="Contenido del paquete">
                             <field name="item_ids">
                                 <list editable="top">
-                                    <field name="hibrid_id"/>
-                                    <field name="hibrid_code"/>
-                                    <field name="vegetable"/>
-                                    <field name="amount"/>
-                                    <field name="package_type"/>
+                                    <field name="hibrid_id" />
+                                    <field name="hibrid_code" />
+                                    <field name="vegetable" />
+                                    <field name="amount" />
+                                    <field name="package_type" />
                                 </list>
                             </field>
                         </page>
@@ -50,10 +50,10 @@
         <field name="model">seed.deperture.order</field>
         <field name="arch" type="xml">
             <list>
-                <field name="order_number"/>
-                <field name="deperture_date"/>
-                <field name="arrival_date"/>
-                <field name="destinatary_name"/>
+                <field name="order_number" />
+                <field name="deperture_date" />
+                <field name="arrival_date" />
+                <field name="destinatary_name" />
             </list>
         </field>
     </record>

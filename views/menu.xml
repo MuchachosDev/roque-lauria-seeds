@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <menuitem
-        id="seeds_menu_root"
-        name="Seguimiento de Semillas"
-        sequence="10"
-    />
+    <menuitem id="seeds_menu_root" name="Gestión de Ensayos" sequence="10" />
     <!-- Top bar menus -->
     <menuitem
         id="company_menu"
-        name="Empresa"
+        name="Empresas"
         action="seed_company_action"
         parent="seeds_menu_root"
         sequence="20"
     />
     <menuitem
         id="general_seed_menu"
-        name="Semillas"
+        name="Muestras"
         parent="seeds_menu_root"
         sequence="30"
     />

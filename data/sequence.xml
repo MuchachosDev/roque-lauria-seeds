@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- Secuencia para órdenes de entrada -->
+    <!-- Arrival order sequence -->
     <record id="seq_seed_arrival_order" model="ir.sequence">
         <field name="name">Seed Arrival Order</field>
         <field name="code">seed.arrival.order</field>
@@ -9,11 +9,20 @@
         <field name="number_increment">1</field>
     </record>
 
-    <!-- Secuencia para órdenes de salida -->
+    <!-- Deperture order sequence -->
     <record id="seq_seed_deperture_order" model="ir.sequence">
         <field name="name">Seed Deperture Order</field>
         <field name="code">seed.deperture.order</field>
         <field name="prefix">SAL/</field>
+        <field name="padding">10</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Result order sequence -->
+    <record id="seq_seed_result_order" model="ir.sequence">
+        <field name="name">Seed Result Order</field>
+        <field name="code">seed.result.order</field>
+        <field name="prefix">RES/</field>
         <field name="padding">10</field>
         <field name="number_increment">1</field>
     </record>

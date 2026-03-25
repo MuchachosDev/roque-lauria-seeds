@@ -5,6 +5,7 @@ class SeedHibrid(models.Model):
     _name = "seed.hibrid"
     _description = "Hibrid Seeds"
     _inherit = ["mail.thread"]
+    _rec_name = "hibrid_code"
 
     hibrid_code = fields.Char(string="Código del hibrido", tracking=True)
     name = fields.Char(string="Nombre", tracking=True)

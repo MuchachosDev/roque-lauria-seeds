@@ -7,6 +7,12 @@
         <field name="arch" type="xml">
             <form string="Orden de resultado">
                 <sheet>
+                    <div class="oe_title">
+                        <label for="order_number" string="Orden de resultado" />
+                        <h1>
+                            <field name="order_number" readonly="1" />
+                        </h1>
+                    </div>
                     <group>
                         <group string="Datos generales del ensayo">
                             <field name="farmer" />
@@ -37,7 +43,7 @@
                     </group>
                     <notebook>
                         <page string="Resultados por variedad">
-                            <field name="result_order_item_ids">
+                            <field name="item_ids">
                                 <list>
                                     <field name="land_code" />
                                     <field name="evaluation_date" />
@@ -58,6 +64,7 @@
         <field name="model">seed.result.order</field>
         <field name="arch" type="xml">
             <list>
+                <field name="order_number" />
                 <field name="start_date" />
                 <field name="end_date" />
                 <field name="season" />

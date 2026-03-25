@@ -4,9 +4,13 @@ from odoo import api, fields, models
 class SeedArrivalOrder(models.Model):
     _name = "seed.arrival.order"
     _description = "Arrival orders"
+    _rec_name = "order_number"
 
     order_number = fields.Char(
-        string="Orden de entrada N°", readonly=True, copy=False, default="Nuevo"
+        string="Orden de entrada",
+        default="Nueva orden de entrada",
+        readonly=True,
+        copy=False,
     )
     arrival_date = fields.Date(string="Fecha de ingreso", default=fields.Date.today)
     invoice_number = fields.Char(string="Número de factura")
@@ -52,8 +56,12 @@ class SeedArrivalOrder(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if vals.get("order_number", "Nuevo") == "Nuevo":
-                vals["order_number"] = self.env["ir.sequence"].next_by_code(
-                    "seed.arrival.order"
-                ) or "Nuevo"
+            if (
+                vals.get("order_number", "Nueva orden de entrada")
+                == "Nueva orden de entrada"
+            ):
+                vals["order_number"] = (
+                    self.env["ir.sequence"].next_by_code("seed.arrival.order")
+                    or "Nueva orden de entrada"
+                )
         return super().create(vals_list)

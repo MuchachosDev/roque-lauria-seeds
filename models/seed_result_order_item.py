@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 class SeedResultOrderItem(models.Model):
     _name = "seed.result.order.item"
-    _description = "Result order item"
+    _description = "Result order items"
 
     land_code = fields.Char(string="Código de campo")
     evaluation_date = fields.Date(string="Fecha de evalución")
