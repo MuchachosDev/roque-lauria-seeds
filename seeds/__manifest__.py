@@ -18,6 +18,9 @@
         "views/seed_result_order_view.xml",
         "views/seed_vegetable_view.xml",
         "views/menu.xml",
+        # Reports
+        "report/report_template.xml",
+        "report/report_action.xml"
         # Pre-loaded data
         "data/sequence.xml",
         "data/experimental_result_template.xml",
