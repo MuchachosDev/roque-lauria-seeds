@@ -1,6 +1,51 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="vegetable_batavia_lettuce" model="seed.vegetable">
         <field name="name">Lechuga Batavia</field>
+    </record>
+    <record id="vegetable_eggplant" model="seed.vegetable">
+        <field name="name">Berenjena</field>
+    </record>
+    <record id="vegetable_broccoli" model="seed.vegetable">
+        <field name="name">Brocoli</field>
+    </record>
+    <record id="vegetable_onion" model="seed.vegetable">
+        <field name="name">Cebolla</field>
+    </record>
+    <record id="vegetable_cauliflower" model="seed.vegetable">
+        <field name="name">Coliflor</field>
+    </record>
+    <record id="vegetable_iceberg_lettuce" model="seed.vegetable">
+        <field name="name">Lechuga Iceberg</field>
+    </record>
+    <record id="vegetable_corn" model="seed.vegetable">
+        <field name="name">Maiz</field>
+    </record>
+    <record id="vegetable_papaya" model="seed.vegetable">
+        <field name="name">Papaya</field>
+    </record>
+    <record id="vegetable_cabbage" model="seed.vegetable">
+        <field name="name">Repollo</field>
+    </record>
+    <record id="vegetable_melon" model="seed.vegetable">
+        <field name="name">Melon</field>
+    </record>
+    <record id="vegetable_cucumber" model="seed.vegetable">
+        <field name="name">Pepino</field>
+    </record>
+    <record id="vegetable_pepper" model="seed.vegetable">
+        <field name="name">Pimiento</field>
+    </record>
+    <record id="vegetable_watermelon" model="seed.vegetable">
+        <field name="name">Sandia</field>
+    </record>
+    <record id="vegetable_determinated_tomate" model="seed.vegetable">
+        <field name="name">Tomate Determinado</field>
+    </record>
+    <record id="vegetable_indeterminated_tomato" model="seed.vegetable">
+        <field name="name">Tomate Indeterminado</field>
+    </record>
+    <record id="vegetable_pumpkin" model="seed.vegetable">
+        <field name="name">Zapallo</field>
     </record>
 </odoo>
