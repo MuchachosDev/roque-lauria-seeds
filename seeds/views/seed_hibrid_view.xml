@@ -20,17 +20,6 @@
                         <field name="company_id" />
                         <field name="name" />
                     </group>
-                    <notebook>
-                        <page string="Orden de entrega">
-                            <field name="arrival_order_ids">
-                                <list>
-                                    <field name="arrival_date" />
-                                    <field name="invoice_number" />
-                                    <field name="amount" />
-                                </list>
-                            </field>
-                        </page>
-                    </notebook>
                 </sheet>
                 <chatter />
             </form>

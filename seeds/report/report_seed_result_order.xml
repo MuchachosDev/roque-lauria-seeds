@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_seed_result_order_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        
+                        <h2 class="mt-4 mb-4">
+                            <span>Orden de Resultados:</span>
+                            <span t-field="o.order_number"/>
+                        </h2>
+                        
+                        <div class="row mt-4 mb-3">
+                            <div class="col-4 mb-3 text-break" t-if="o.farmer">
+                                <strong>Agricultor:</strong>
+                                <div t-field="o.farmer"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.distributor">
+                                <strong>Distribuidor:</strong>
+                                <div t-field="o.distributor"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.season">
+                                <strong>Temporada:</strong>
+                                <div t-field="o.season"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.start_date">
+                                <strong>Fecha de inicio:</strong>
+                                <div t-field="o.start_date"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.end_date">
+                                <strong>Fecha de fin:</strong>
+                                <div t-field="o.end_date"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.seed_date">
+                                <strong>Fecha de siembra:</strong>
+                                <div t-field="o.seed_date"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.replant_date">
+                                <strong>Transplante:</strong>
+                                <div t-field="o.replant_date"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.substratum">
+                                <strong>Sustrato:</strong>
+                                <div t-field="o.substratum"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.harvest_method">
+                                <strong>Método de cosecha:</strong>
+                                <div t-field="o.harvest_method"/>
+                            </div>
+                            <div class="col-4 mb-3 text-break" t-if="o.test_fiability">
+                                <strong>Confiabilidad:</strong>
+                                <div t-field="o.test_fiability"/>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3 class="border-bottom pb-2 mb-4">Evaluación de Variedades</h3>
+                            
+                            <t t-foreach="o.item_ids" t-as="line">
+                                
+                                <div style="page-break-inside: avoid;" class="mb-5">
+                                    
+                                    <div class="bg-light p-3 mb-3 border">
+                                        <h4 class="m-0 text-primary">
+                                            <span t-field="line.vegetable_name"/> - <span t-field="line.hibrid_id.name"/>
+                                        </h4>
+                                        <div class="row mt-2 text-muted">
+                                            <div class="col-auto">
+                                                <strong>Cód. Campo:</strong> <span t-field="line.land_code"/>
+                                            </div>
+                                            <div class="col-auto">
+                                                <strong>Fecha Eval.:</strong> <span t-field="line.evaluation_date"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="experiment-result-container">
+                                        <div t-field="line.experiment_result"/>
+                                    </div>
+
+                                    <t t-if="line.photo">
+                                        <div class="mt-4">
+                                            <h5>Evidencia Fotográfica</h5>
+                                            <div class="row">
+                                                <t t-foreach="line.photo" t-as="img">
+                                                    <t t-if="img.mimetype.startswith('image/')">
+                                                        <div class="col-4 mb-3">
+                                                            <img t-att-src="'/web/image/%s' % img.id" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;"/>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    
+                                </div>
+                            </t>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_seed_result_order" model="ir.actions.report">
+        <field name="name">Orden/es de Resultado</field>
+        <field name="model">seed.result.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">seeds.report_seed_result_order_template</field>
+        <field name="report_file">seeds.report_seed_result_order_template</field>
+        <field name="binding_model_id" ref="model_seed_result_order" />
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Resultados_%s' % (object.order_number)</field>
+    </record>
+</odoo>

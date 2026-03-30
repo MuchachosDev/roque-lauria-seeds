@@ -43,7 +43,7 @@
                                     <th name="th_vegetable" class="p-2">Hortaliza</th>
                                     <th name="th_hibrid" class="p-2">Híbrido</th>
                                     <th name="th_code" class="p-2">Código</th>
-                                    <th name="th_amount" class="text-end p-2">Cantidad</th>
+                                    <th name="th_amount" class="p-2">Cantidad</th>
                                     <th name="th_package" class="p-2">Presentación</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                         <td class="p-2"><span t-field="line.vegetable"/></td>
                                         <td class="p-2"><span t-field="line.hibrid_name"/></td>
                                         <td class="p-2"><span t-field="line.hibrid_code"/></td>
-                                        <td class="text-end p-2"><span t-field="line.amount"/></td>
+                                        <td class="p-2"><span t-field="line.amount"/></td>
                                         <td class="p-2"><span t-field="line.package_type"/></td>
                                     </tr>
                                 </t>
@@ -70,4 +70,14 @@
             </t>
         </t>
     </template>
+
+    <record id="action_report_seed_deperture_order" model="ir.actions.report">
+        <field name="name">Orden/es de Salida</field>
+        <field name="model">seed.deperture.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">seeds.report_seed_deperture_order_template</field>
+        <field name="report_file">seeds.report_seed_deperture_order_template</field>
+        <field name="binding_model_id" ref="model_seed_deperture_order"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>
