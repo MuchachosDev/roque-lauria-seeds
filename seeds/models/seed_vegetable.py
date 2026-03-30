@@ -6,8 +6,3 @@ class SeedVegetable(models.Model):
     _description = "Vegetables"
 
     name = fields.Char(string="Nombre")
-    experiment_result_template_id = fields.One2many(
-        string="Plantilla de resultados",
-        comodel_name="seed.experiment.result.template",
-        inverse_name="vegetable_id",
-    )

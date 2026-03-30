@@ -40,7 +40,7 @@ class SeedArrivalOrder(models.Model):
     production = fields.Char(string="Producción")
     transport_behaviour = fields.Char(string="Comportamiento durante el traslado")
     brix_degrees = fields.Float(string="Grados Brixs", digits=(4, 2))
-    post_harvesting = fields.Char(string="Post cocecha")
+    post_harvesting = fields.Char(string="Post cosecha")
     uniformity = fields.Char(string="Uniformidad")
     neck_quality = fields.Char(string="Calidad del cuello")
     cycle = fields.Char(string="Ciclo")

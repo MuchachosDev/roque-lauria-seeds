@@ -6,7 +6,7 @@ class SeedResultOrderItem(models.Model):
     _description = "Result order items"
 
     land_code = fields.Char(string="Código de campo")
-    evaluation_date = fields.Date(string="Fecha de evalución")
+    evaluation_date = fields.Date(string="Fecha de evaluación")
     experiment_result = fields.Html()
     hibrid_id = fields.Many2one(string="Variedad", comodel_name="seed.hibrid")
     vegetable_name = fields.Char(
@@ -21,8 +21,17 @@ class SeedResultOrderItem(models.Model):
         column2="attachment_id",
     )
 
-    @api.depends("hibrid_id")
-    def _lead_result_template(self):
-        vegetable = self.hibrid_id.vegetable_id
-        if self.hibrid_id and vegetable:
-            self.experiment_result = vegetable.experiment_result_template_id.template
+    @api.onchange("hibrid_id")
+    def _onchange_hibrid_id_load_template(self):
+        for rec in self:
+            rec.experiment_result = False
+
+            if not rec.hibrid_id or not rec.hibrid_id.vegetable_id:
+                continue
+
+            template = self.env["seed.experiment.result.template"].search(
+                [("vegetable_id", "=", rec.hibrid_id.vegetable_id.id)],
+                limit=1,
+            )
+
+            rec.experiment_result = template.template if template else False
