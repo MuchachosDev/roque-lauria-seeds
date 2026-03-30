@@ -1,2512 +1,974 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- 1. Lechuga Batavia -->
     <record id="batavia_lettuce_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Lechuga Batavia</field>
-        <field name="vegetable_id" ref="seeds.vegetable_batavia_lettuce"/>
+        <field name="vegetable_id" ref="seeds.vegetable_batavia_lettuce" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Lechuga Batavia</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Lechuga Batavia</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Uniformidad de planta</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Intensidad de color de la hoja</td><td></td><td class="small">1 - Claro | 3 - Medio claro | 5 - Medio | 7 - Oscuro | 9 - Muy oscuro</td></tr>
+                            <tr><td class="fw-bold">Brillo de hojas</td><td></td><td class="small">1 - Muy opaco | 3 - Opaco | 5 - Normal | 7 - Brilloso | 9 - Muy brilloso</td></tr>
+                            <tr><td class="fw-bold">Tamaño de la cabeza</td><td></td><td class="small">1 - Muy pequeña | 3 - Pequeña | 5 - Mediana | 7 - Grande | 9 - Muy grande</td></tr>
+                            <tr><td class="fw-bold">Precocidad</td><td></td><td class="small">1 - Muy tardía | 3 - Tardía | 5 - Media temprana | 7 - Temprana | 9 - Muy temprana</td></tr>
+                            <tr><td class="fw-bold">Densidad de cabeza</td><td></td><td class="small">1 - Muy suelta | 3 - Suelta | 5 - Media compacta | 7 - Compacta | 9 - Muy compacta</td></tr>
+                            <tr><td class="fw-bold">Cierre superior</td><td></td><td class="small">1 - Muy cerrado | 3 - Cerrado | 5 - Un poco abierta | 7 - Abierto | 9 - Muy abierto</td></tr>
+                            <tr><td class="fw-bold">Daño por helada</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Poco presente | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Top Presentation</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tip Burn</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Poco presente | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Hojas amarillas</td><td></td><td class="small">1 - Muchas | 3 - Varias | 5 - Moderado | 7 - Algunas | 9 - Ninguna</td></tr>
+                            <tr><td class="fw-bold">Pudrición basal</td><td></td><td class="small">1 - Muchas | 3 - Varias | 5 - Moderado | 7 - Algunas | 9 - Ninguna</td></tr>
+                            <tr><td class="fw-bold">Presentación de la base</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Cierre de la base</td><td></td><td class="small">1 - Muy abierto | 3 - Abierto | 5 - Moderado | 7 - Cerrado | 9 - Muy cerrado</td></tr>
+                            <tr><td class="fw-bold">Estructura de las venas</td><td></td><td class="small">1 - Muy acostillada | 3 - Acostillada | 5 - Moderada | 7 - Aplanada | 9 - Muy aplanada</td></tr>
+                            <tr><td class="fw-bold">Longitud de cabeza</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Tip burn interno</td><td></td><td class="small">1 - 5 cabezas afectadas | 3 - 4 cabezas afectadas | 5 - 3 cabezas afectadas | 7 - 2 cabezas afectadas | 9 - 1 cabeza afectada</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Uniformidad de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Intensidad de color de la hoja</strong></td>
-            <td >&#160;</td>
-            <td >1 - Claro | 3 - Medio claro | 5 - Medio | 7 - Oscuro | 9 - Muy oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Brillo de hojas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy opaco | 3 - Opaco | 5 - Normal | 7 - Brilloso | 9 - Muy brilloso</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pequeña | 3 - Pequeña | 5 - Mediana | 7 - Grande | 9 - Muy grande</td>
-            </tr>
-            <tr>
-            <td ><strong>Precocidad</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy tardía | 3 - Tardía | 5 - Media temprana | 7 - Temprana | 9 - Muy temprana</td>
-            </tr>
-            <tr>
-            <td ><strong>Densidad de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy suelta | 3 - Suelta | 5 - Media compacta | 7 - Compacta | 9 - Muy compacta</td>
-            </tr>
-            <tr>
-            <td ><strong>Cierre superior</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy cerrado | 3 - Cerrado | 5 - Un poco abierta | 7 - Abierto | 9 - Muy abierto</td>
-            </tr>
-            <tr>
-            <td ><strong>Daño por helada</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Poco presente | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Top Presentation</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tip Burn</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Poco presente | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Hojas amarillas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchas | 3 - Varias | 5 - Moderado | 7 - Algunas | 9 - Ninguna</td>
-            </tr>
-            <tr>
-            <td ><strong>Pudrición basal</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchas | 3 - Varias | 5 - Moderado | 7 - Algunas | 9 - Ninguna</td>
-            </tr>
-            <tr>
-            <td ><strong>Presentación de la base</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cierre de la base</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy abierto | 3 - Abierto | 5 - Moderado | 7 - Cerrado | 9 - Muy cerrado</td>
-            </tr>
-            <tr>
-            <td ><strong>Estructura de las venas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy acostillada | 3 - Acostillada | 5 - Moderada | 7 - Aplanada | 9 - Muy aplanada</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Tip burn interno</strong></td>
-            <td >&#160;</td>
-            <td >1 - 5 cabezas afectadas | 3 - 4 cabezas afectadas | 5 - 3 cabezas afectadas | 7 - 2 cabezas afectadas | 9 - 1 cabeza afectada</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 2. Berenjena -->
     <record id="eggplant_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Berenjena</field>
-        <field name="vegetable_id" ref="seeds.vegetable_eggplant"/>
+        <field name="vegetable_id" ref="seeds.vegetable_eggplant" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Berenjena</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Berenjena</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Número de campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Nombre de variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de observación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Precocidad</td><td></td><td class="small">Escala descriptiva: tardío a temprano</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">Escala descriptiva: débil a fuerte</td></tr>
+                            <tr><td class="fw-bold">Carga de frutos</td><td></td><td class="small">Escala descriptiva: bajo a alto</td></tr>
+                            <tr><td class="fw-bold">Cantidad de frutos cosechados 1° calidad</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Largo de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Ancho de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Tamaño del cáliz</td><td></td><td class="small">Escala descriptiva: pequeño a grande</td></tr>
+                            <tr><td class="fw-bold">Color del fruto</td><td></td><td class="small">Escala descriptiva: claro a oscuro</td></tr>
+                            <tr><td class="fw-bold">Firmeza del fruto maduro</td><td></td><td class="small">Escala descriptiva: blando a duro</td></tr>
+                            <tr><td class="fw-bold">Fruto brillante</td><td></td><td class="small">Escala descriptiva: malo a bueno</td></tr>
+                            <tr><td class="fw-bold">Hábito de planta</td><td></td><td class="small">Escala descriptiva: denso a abierto</td></tr>
+                            <tr><td class="fw-bold">Puntos fuertes</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Puntos débiles</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Observaciones generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Número de campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Nombre de variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de observación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Precocidad</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: tardío a temprano</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: débil a fuerte</td>
-            </tr>
-            <tr>
-            <td ><strong>Carga de frutos</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: bajo a alto</td>
-            </tr>
-            <tr>
-            <td ><strong>Cantidad de frutos cosechados 1° calidad</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Largo de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Ancho de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño del cáliz</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: pequeño a grande</td>
-            </tr>
-            <tr>
-            <td ><strong>Color del fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: claro a oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza del fruto maduro</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: blando a duro</td>
-            </tr>
-            <tr>
-            <td ><strong>Fruto brillante</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: malo a bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Hábito de planta</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: denso a abierto</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos fuertes</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos débiles</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 3. Brócoli -->
     <record id="broccoli_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Brócoli</field>
-        <field name="vegetable_id" ref="seeds.vegetable_broccoli"/>
+        <field name="vegetable_id" ref="seeds.vegetable_broccoli" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Brócoli</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Brócoli</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Días de siembra hasta fin de cosecha</td><td></td><td class="small">Cantidad numérica</td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Color de cabeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Firmeza</td><td></td><td class="small">1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Suavidad de la cabeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Opresión o estrechez de floretes</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de granos</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tamaño de granos</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Granos marrones</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Defectos en granos</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Ojo de gato</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Longitud de ramificación</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Facilidad de cosecha</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de cosecha</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Peso promedio de cabeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tallo hueco</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Mildiu</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Alternaria</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Días de siembra hasta fin de cosecha</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad numérica</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Color de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Suavidad de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Opresión o estrechez de floretes</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de granos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño de granos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Granos marrones</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Defectos en granos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Ojo de gato</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de ramificación</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Facilidad de cosecha</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de cosecha</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tallo hueco</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Mildiu</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Alternaria</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 4. Cebolla -->
     <record id="onion_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Cebolla</field>
-        <field name="vegetable_id" ref="seeds.vegetable_onion"/>
+        <field name="vegetable_id" ref="seeds.vegetable_onion" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Cebolla</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Cebolla</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Densidad estimada de plantas</td><td></td><td class="small">1 - 0 plantas | 3 - Insuficientes | 5 - Comerciable | 7 - Densidad ideal | 9 - Muy alta densidad</td></tr>
+                            <tr><td class="fw-bold">Fecha de 50% echado</td><td></td><td class="small">Tipo: fecha</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de floración</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Sanidad del follaje</td><td></td><td class="small">1 - Muy mala | 3 - Mala | 5 - Medio | 7 - Sana | 9 - Muy sana</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Color externo</td><td></td><td class="small">1 - Muy pálida | 3 - Pálida | 5 - Media | 7 - Oscura | 9 - Muy oscura</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de formato</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Serosidad de hojas</td><td></td><td class="small">1 - Verde claro | 3 - Medio verde | 5 - Verde oscuro | 7 - Verde azulado</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de centros únicos</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de bulbos dobles apretados</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de bulbos dobles distanciados</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Formato que predomina</td><td></td><td class="small">1 - Huso | 2 - Globo alta | 3 - Lágrima | 4 - Grano | 5 - Redonda | 6 - Plana grano | 7 - Granex | 8 - Plana redonda | 9 - Aplanada</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de tamaño</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Grosor del cuello</td><td></td><td class="small">1 - Muy delgado | 3 - Delgado | 5 - Comerciable | 7 - Grueso | 9 - Muy grueso</td></tr>
+                            <tr><td class="fw-bold">Susceptibilidad a raíz rosada</td><td></td><td class="small">1 - 50-200% | 3 - 25-50% | 5 - 5-25% | 7 - 1-5% | 9 - 0% inmune</td></tr>
+                            <tr><td class="fw-bold">Firmeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Calidad de catáfilas o piel</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Daño por Fusarium</td><td></td><td class="small">1 - 50-200% | 3 - 25-50% | 5 - 5-25% | 7 - 1-5% | 9 - 0% inmune</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Densidad estimada de plantas</strong></td>
-            <td >&#160;</td>
-            <td >1 - 0 plantas | 3 - Insuficientes | 5 - Comerciable | 7 - Densidad ideal | 9 - Muy alta densidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de 50% echado</strong></td>
-            <td >&#160;</td>
-            <td >Tipo: fecha</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de floración</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad del follaje</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mala | 3 - Mala | 5 - Medio | 7 - Sana | 9 - Muy sana</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Color externo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pálida | 3 - Pálida | 5 - Media | 7 - Oscura | 9 - Muy oscura</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de formato</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Serosidad de hojas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Verde claro | 3 - Medio verde | 5 - Verde oscuro | 7 - Verde azulado</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de centros únicos</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de bulbos dobles apretados</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de bulbos dobles distanciados</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Formato que predomina</strong></td>
-            <td >&#160;</td>
-            <td >1 - Huso | 2 - Globo alta | 3 - Lágrima | 4 - Grano | 5 - Redonda | 6 - Plana grano | 7 - Granex | 8 - Plana redonda | 9 - Aplanada</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de tamaño</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Grosor del cuello</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy delgado | 3 - Delgado | 5 - Comerciable | 7 - Grueso | 9 - Muy grueso</td>
-            </tr>
-            <tr>
-            <td ><strong>Susceptibilidad a raíz rosada</strong></td>
-            <td >&#160;</td>
-            <td >1 - 50-200% | 3 - 25-50% | 5 - 5-25% | 7 - 1-5% | 9 - 0% inmune</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de catáfilas o piel</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Daño por Fusarium</strong></td>
-            <td >&#160;</td>
-            <td >1 - 50-200% | 3 - 25-50% | 5 - 5-25% | 7 - 1-5% | 9 - 0% inmune</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 5. Coliflor -->
     <record id="cauliflower_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Coliflor</field>
-        <field name="vegetable_id" ref="seeds.vegetable_cauliflower"/>
+        <field name="vegetable_id" ref="seeds.vegetable_cauliflower" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Coliflor</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Coliflor</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de días entre siembra y cosecha</td><td></td><td class="small">Cantidad numérica</td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Hábito de la hoja</td><td></td><td class="small">1 - Muy curva | 3 - Curva | 5 - Semierecta | 7 - Erecta | 9 - Muy erecta</td></tr>
+                            <tr><td class="fw-bold">Calidad de la hoja</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Algunas hojas amarillas | 7 - Hojas limpias | 9 - Hojas muy limpias</td></tr>
+                            <tr><td class="fw-bold">Vigor de la planta</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Cobertura de la cabeza</td><td></td><td class="small">1 - Muy abierta | 3 - Abierta | 5 - Ligeramente abierta | 7 - Semi-cerrada | 9 - Muy cerrada</td></tr>
+                            <tr><td class="fw-bold">Color externo</td><td></td><td class="small">1 - Crema | 3 - Blanco puro | 5 - Amarillo | 7 - Marfil | 9 - Blanco</td></tr>
+                            <tr><td class="fw-bold">Puntaje de color de cabeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Calidad de cabeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Firmeza de cabeza</td><td></td><td class="small">1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Presencia de hojas pequeñas alrededor de la cabeza</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Floración de la cabeza</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Tallo hueco</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Cabeza rosada</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Formato de cabeza</td><td></td><td class="small">1 - Aplanado | 3 - Semiaplanada | 5 - Semiovalado | 7 - Ovalado | 9 - Muy ovalado</td></tr>
+                            <tr><td class="fw-bold">Número de cabezas de 12-14 cm</td><td></td><td class="small">Cantidad en unidades</td></tr>
+                            <tr><td class="fw-bold">Número de cabezas de 15 cm o más</td><td></td><td class="small">Cantidad en unidades</td></tr>
+                            <tr><td class="fw-bold">Pudrición de raíz / hernia de la col</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Susceptibilidad a xanthomonas</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Puntuación total</td><td></td><td class="small">2 - Muy mal | 4 - No comerciable | 6 - Comerciable | 8 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de días entre siembra y cosecha</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad numérica</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Hábito de la hoja</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy curva | 3 - Curva | 5 - Semierecta | 7 - Erecta | 9 - Muy erecta</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de la hoja</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Algunas hojas amarillas | 7 - Hojas limpias | 9 - Hojas muy limpias</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de la planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy abierta | 3 - Abierta | 5 - Ligeramente abierta | 7 - Semi-cerrada | 9 - Muy cerrada</td>
-            </tr>
-            <tr>
-            <td ><strong>Color externo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Crema | 3 - Blanco puro | 5 - Amarillo | 7 - Marfil | 9 - Blanco</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntaje de color de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Presencia de hojas pequeñas alrededor de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Floración de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tallo hueco</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cabeza rosada</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Formato de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Aplanado | 3 - Semiaplanada | 5 - Semiovalado | 7 - Ovalado | 9 - Muy ovalado</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de cabezas de 12-14 cm</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad en unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de cabezas de 15 cm o más</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad en unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Pudrición de raíz / hernia de la col</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Susceptibilidad a xanthomonas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntuación total</strong></td>
-            <td >&#160;</td>
-            <td >2 - Muy mal | 4 - No comerciable | 6 - Comerciable | 8 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 6. Lechuga Iceberg -->
     <record id="iceberg_lettuce_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Lechuga Iceberg</field>
-        <field name="vegetable_id" ref="seeds.vegetable_iceberg_lettuce"/>
+        <field name="vegetable_id" ref="seeds.vegetable_iceberg_lettuce" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Lechuga Iceberg</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Lechuga Iceberg</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Tamaño de cabeza</td><td></td><td class="small">1 - Muy pequeña | 3 - Pequeña | 5 - Mediana | 7 - Grande | 9 - Muy grande</td></tr>
+                            <tr><td class="fw-bold">Forma de cabeza</td><td></td><td class="small">1 - Cónica | 3 - Un poco redondeada | 5 - Achatada redondeada | 7 - Redondeada | 9 - Muy redondeada</td></tr>
+                            <tr><td class="fw-bold">Peso promedio de cabezas</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Diámetro promedio de cabezas</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Longitud de la cabeza</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de llenado de cabeza</td><td></td><td class="small">1 - 60% | 3 - 70% | 5 - 80% | 7 - 85% | 9 - 90%</td></tr>
+                            <tr><td class="fw-bold">Cabezas con el tronco en el centro</td><td></td><td class="small">1 - Ninguna | 3 - Algunas | 5 - Mitad | 7 - Mayoría | 9 - Todas</td></tr>
+                            <tr><td class="fw-bold">Hojas cobertoras</td><td></td><td class="small">1 - Muy escasas | 3 - Escasas | 5 - Medias | 7 - Varias hojas | 9 - Muchas hojas</td></tr>
+                            <tr><td class="fw-bold">Quemadura de punta / tipburn</td><td></td><td class="small">1 - 5 plantas afectadas | 3 - 4 plantas afectadas | 5 - 3 plantas afectadas | 7 - 2 plantas afectadas | 9 - 1 planta afectada</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Tamaño de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pequeña | 3 - Pequeña | 5 - Mediana | 7 - Grande | 9 - Muy grande</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Cónica | 3 - Un poco redondeada | 5 - Achatada redondeada | 7 - Redondeada | 9 - Muy redondeada</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de cabezas</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro promedio de cabezas</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de la cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de llenado de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - 60% | 3 - 70% | 5 - 80% | 7 - 85% | 9 - 90%</td>
-            </tr>
-            <tr>
-            <td ><strong>Cabezas con el tronco en el centro</strong></td>
-            <td >&#160;</td>
-            <td >1 - Ninguna | 3 - Algunas | 5 - Mitad | 7 - Mayoría | 9 - Todas</td>
-            </tr>
-            <tr>
-            <td ><strong>Hojas cobertoras</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy escasas | 3 - Escasas | 5 - Medias | 7 - Varias hojas | 9 - Muchas hojas</td>
-            </tr>
-            <tr>
-            <td ><strong>Quemadura de punta / tipburn</strong></td>
-            <td >&#160;</td>
-            <td >1 - 5 plantas afectadas | 3 - 4 plantas afectadas | 5 - 3 plantas afectadas | 7 - 2 plantas afectadas | 9 - 1 planta afectada</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 7. Maíz -->
     <record id="corn_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Maíz</field>
-        <field name="vegetable_id" ref="seeds.vegetable_corn"/>
+        <field name="vegetable_id" ref="seeds.vegetable_corn" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Maíz</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Maíz</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de planta</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Altura de planta</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Altura de inserción de espiga</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Número de espigas por planta</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Sanidad foliar</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Acame</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de espiga</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Espigas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Largo de espiga</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Diámetro de espiga</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Peso de espiga</td><td></td><td class="small">Unidad: g</td></tr>
+                            <tr><td class="fw-bold">Filas de granos</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Granos por fila</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Cobertura de chala</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de espiga</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Color de grano</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Llenado de punta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Defectos</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Producción</td>
+                            </tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Espigas por planta</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Peso promedio de espiga</td><td></td><td class="small">Unidad: g</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">Unidad: kg/planta</td></tr>
+                            <tr><td class="fw-bold">Rendimiento estimado</td><td></td><td class="small">Unidad: t/ha</td></tr>
+                            <tr><td class="fw-bold">Calidad comercial</td><td></td><td class="small">1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td></tr>
+                            <tr><td class="fw-bold">Evaluación final</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de planta</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de inserción de espiga</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de espigas por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad foliar</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Acame</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de espiga</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Espigas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Largo de espiga</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro de espiga</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de espiga</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: g</td>
-            </tr>
-            <tr>
-            <td ><strong>Filas de granos</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Granos por fila</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura de chala</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de espiga</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Color de grano</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Llenado de punta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Defectos</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Producción</td></tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Espigas por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de espiga</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: g</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg/planta</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento estimado</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: t/ha</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad comercial</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td>
-            </tr>
-            <tr>
-            <td ><strong>Evaluación final</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 8. Papaya -->
     <record id="papaya_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Papaya</field>
-        <field name="vegetable_id" ref="seeds.vegetable_papaya"/>
+        <field name="vegetable_id" ref="seeds.vegetable_papaya" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Papaya</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Papaya</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de planta</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Altura de planta</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Diámetro de tallo</td><td></td><td class="small">Unidad: mm</td></tr>
+                            <tr><td class="fw-bold">Altura de primer fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de lote</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Arquitectura de planta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Carga de frutos</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Sanidad de planta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de fruto</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Frutos por planta</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Peso promedio de fruto</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Largo de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Diámetro de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Forma de fruto</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Color externo</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Color de pulpa</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Firmeza</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Cavidad interna</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Brix</td><td></td><td class="small">Dato técnico</td></tr>
+                            <tr><td class="fw-bold">Defectos</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Resumen productivo</td>
+                            </tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Promedio de frutos por planta</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Peso promedio de fruto</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">Unidad: kg/planta</td></tr>
+                            <tr><td class="fw-bold">Rendimiento estimado</td><td></td><td class="small">Unidad: t/ha</td></tr>
+                            <tr><td class="fw-bold">Calidad comercial</td><td></td><td class="small">1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td></tr>
+                            <tr><td class="fw-bold">Evaluación final</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de planta</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro de tallo</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: mm</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de primer fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de lote</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Arquitectura de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Carga de frutos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de fruto</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Frutos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Largo de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Color externo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Color de pulpa</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cavidad interna</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Brix</strong></td>
-            <td >&#160;</td>
-            <td >Dato técnico</td>
-            </tr>
-            <tr>
-            <td ><strong>Defectos</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Resumen productivo</td></tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Promedio de frutos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg/planta</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento estimado</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: t/ha</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad comercial</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td>
-            </tr>
-            <tr>
-            <td ><strong>Evaluación final</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 9. Repollo -->
     <record id="cabbage_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Repollo</field>
-        <field name="vegetable_id" ref="seeds.vegetable_cabbage"/>
+        <field name="vegetable_id" ref="seeds.vegetable_cabbage" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Repollo</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Repollo</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de planta</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de lote</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Altura de planta</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Diámetro de planta</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Sanidad de hoja</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Presencia de plagas</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de cabeza</td>
+                            </tr>
+                            <tr><td class="fw-bold">Parcela</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cabezas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso promedio de cabeza</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Diámetro de cabeza</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Altura de cabeza</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Compacidad</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de cabeza</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Forma</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Color</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tamaño de corazón interno</td><td></td><td class="small">1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Defectos</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Producción</td>
+                            </tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Plantas evaluadas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso promedio de cabeza</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">Unidad: kg/planta</td></tr>
+                            <tr><td class="fw-bold">Rendimiento estimado</td><td></td><td class="small">Unidad: t/ha</td></tr>
+                            <tr><td class="fw-bold">Calidad comercial</td><td></td><td class="small">1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td></tr>
+                            <tr><td class="fw-bold">Evaluación final</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de planta</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de lote</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro de planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad de hoja</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Presencia de plagas</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de cabeza</td></tr>
-            <tr>
-            <td ><strong>Parcela</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cabezas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Diámetro de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Altura de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Compacidad</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Color</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño de corazón interno</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy bajo | 2 - Bajo | 3 - Medio | 4 - Bueno | 5 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Defectos</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Producción</td></tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Plantas evaluadas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio de cabeza</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg/planta</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento estimado</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: t/ha</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad comercial</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy baja | 2 - Baja | 3 - Regular | 4 - Aceptable | 5 - Media | 6 - Satisfactoria | 7 - Buena | 8 - Muy buena | 9 - Excelente | 10 - Sobresaliente</td>
-            </tr>
-            <tr>
-            <td ><strong>Evaluación final</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 10. Melón -->
     <record id="melon_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Melón</field>
-        <field name="vegetable_id" ref="seeds.vegetable_melon"/>
+        <field name="vegetable_id" ref="seeds.vegetable_melon" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Melón</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Melón</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Sanidad de planta</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de plantas cosechadas</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos comercializables por variedad</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos no comercializables por variedad</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de frutos</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Forma de fruto en cosecha</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Intensidad de color externo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Amarillamiento en piel de fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Blossom end cracking</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cicatriz del fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Porcentaje de net en el fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cracking de net</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Calidad de sutura</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Color interno</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Intensidad de color interno</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Rompimiento interno del fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Sabor</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Grados Brix fruta 1</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Grados Brix fruta 2</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Grados Brix fruta 3</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Grados Brix fruta 4</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Grados Brix fruta 5</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Firmeza fruto 1</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Firmeza fruto 2</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Firmeza fruto 3</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Firmeza fruto 4</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Firmeza fruto 5</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso de fruto 1</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso de fruto 2</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso de fruto 3</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso de fruto 4</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso de fruto 5</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso promedio general</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Frutos de descarte por parcela</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad de planta</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de plantas cosechadas</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos comercializables por variedad</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos no comercializables por variedad</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de frutos</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de fruto en cosecha</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Intensidad de color externo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Amarillamiento en piel de fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Blossom end cracking</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cicatriz del fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de net en el fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cracking de net</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de sutura</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Color interno</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Intensidad de color interno</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Rompimiento interno del fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Sabor</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Grados Brix fruta 1</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Grados Brix fruta 2</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Grados Brix fruta 3</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Grados Brix fruta 4</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Grados Brix fruta 5</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza fruto 1</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza fruto 2</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza fruto 3</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza fruto 4</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza fruto 5</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto 1</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto 2</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto 3</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto 4</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto 5</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio general</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Frutos de descarte por parcela</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 11. Pepino -->
     <record id="cucumber_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Pepino</field>
-        <field name="vegetable_id" ref="seeds.vegetable_cucumber"/>
+        <field name="vegetable_id" ref="seeds.vegetable_cucumber" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Pepino</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Pepino</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación de fruto</td>
+                            </tr>
+                            <tr><td class="fw-bold">Intensidad de color externo</td><td></td><td class="small">1 - Muy claro | 3 - Claro | 5 - Medio | 7 - Oscuro | 9 - Muy oscuro</td></tr>
+                            <tr><td class="fw-bold">Longitud de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Forma de fruto</td><td></td><td class="small">1 - Botella | 3 - Curvo | 5 - Con cuello</td></tr>
+                            <tr><td class="fw-bold">Base del fruto</td><td></td><td class="small">1 - Muy puntiaguda | 3 - Puntiaguda | 5 - Un poco puntiaguda | 7 - Un poco redondeada | 9 - Redondeada</td></tr>
+                            <tr><td class="fw-bold">Forma de hombros</td><td></td><td class="small">1 - Muy delgado | 3 - Delgado | 5 - Mediano | 7 - Grueso | 9 - Muy grueso</td></tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Número de frutos pequeños</td><td></td><td class="small">Cantidad de unidades</td></tr>
+                            <tr><td class="fw-bold">Número de frutos seleccionados</td><td></td><td class="small">Cantidad de unidades</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td></tr>
+                            <tr><td class="fw-bold">Calidad de fruto</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bien | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Presencia de espinas</td><td></td><td class="small">1 - Muchas | 5 - Algunas | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Frutos sin semilla / huecos</td><td></td><td class="small">1 - Grande | 5 - Mediana | 9 - Pequeña</td></tr>
+                            <tr><td class="fw-bold">Amargor del fruto</td><td></td><td class="small">1 - Amargo | 9 - No amargo</td></tr>
+                            <tr><td class="fw-bold">Nota final</td><td></td><td class="small">2 - Muy malo | 4 - Comercialmente no aceptable | 6 - Comercialmente aceptable | 8 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación de fruto</td></tr>
-            <tr>
-            <td ><strong>Intensidad de color externo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy claro | 3 - Claro | 5 - Medio | 7 - Oscuro | 9 - Muy oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Botella | 3 - Curvo | 5 - Con cuello</td>
-            </tr>
-            <tr>
-            <td ><strong>Base del fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy puntiaguda | 3 - Puntiaguda | 5 - Un poco puntiaguda | 7 - Un poco redondeada | 9 - Redondeada</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de hombros</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy delgado | 3 - Delgado | 5 - Mediano | 7 - Grueso | 9 - Muy grueso</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos pequeños</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad de unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos seleccionados</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad de unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bien | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Presencia de espinas</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchas | 5 - Algunas | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Frutos sin semilla / huecos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Grande | 5 - Mediana | 9 - Pequeña</td>
-            </tr>
-            <tr>
-            <td ><strong>Amargor del fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Amargo | 9 - No amargo</td>
-            </tr>
-            <tr>
-            <td ><strong>Nota final</strong></td>
-            <td >&#160;</td>
-            <td >2 - Muy malo | 4 - Comercialmente no aceptable | 6 - Comercialmente aceptable | 8 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 12. Pimiento -->
     <record id="pepper_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Pimiento</field>
-        <field name="vegetable_id" ref="seeds.vegetable_pepper"/>
+        <field name="vegetable_id" ref="seeds.vegetable_pepper" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Pimiento</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Pimiento</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Precocidad</td><td></td><td class="small">1 - Muy tardía | 3 - Tardía | 5 - Medio | 7 - Temprana | 9 - Muy temprana</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de planta</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Cobertura foliar</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Longitud de planta</td><td></td><td class="small">1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">1 - Muy mal | 3 - Mal | 5 - Moderada | 7 - Buena | 9 - Muy buena</td></tr>
+                            <tr><td class="fw-bold">Suavidad de la piel</td><td></td><td class="small">1 - Áspera | 3 - Muy áspera | 5 - Moderada | 7 - Suave | 9 - Muy suave</td></tr>
+                            <tr><td class="fw-bold">Número de frutos con 2 lóculos</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos con 3 lóculos</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos con 4 lóculos</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos con 5 lóculos</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Medida de ancho del fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Forma de fruto</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Presencia de STIP</td><td></td><td class="small">Sí / No</td></tr>
+                            <tr><td class="fw-bold">Porcentaje de frutos con antocianinas</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Firmeza</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Macrocracking</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Star cracking</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Micro cracking</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">BER / base del fruto negra</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Incidencia del BER durante cultivo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Pitting</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Blossom end depth</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Brillo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Pudrición interna</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Intensidad de color externo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Tiempo de viraje de color</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Silvering</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Depresión de los hombros</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Productividad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Visión general de la variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de plantas por variedad</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Peso de frutos comercializables</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Peso total de fruta cosechada</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de frutos cosechados</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos Jumbo</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos XL</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos L</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos M</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos pequeños</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos cosechados 1era</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos cosechados 2da</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Número de frutos descarte</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Botrytis</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Precocidad</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy tardía | 3 - Tardía | 5 - Medio | 7 - Temprana | 9 - Muy temprana</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura foliar</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mal | 3 - Mal | 5 - Moderada | 7 - Buena | 9 - Muy buena</td>
-            </tr>
-            <tr>
-            <td ><strong>Suavidad de la piel</strong></td>
-            <td >&#160;</td>
-            <td >1 - Áspera | 3 - Muy áspera | 5 - Moderada | 7 - Suave | 9 - Muy suave</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos con 2 lóculos</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos con 3 lóculos</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos con 4 lóculos</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos con 5 lóculos</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Medida de ancho del fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Presencia de STIP</strong></td>
-            <td >&#160;</td>
-            <td >Sí / No</td>
-            </tr>
-            <tr>
-            <td ><strong>Porcentaje de frutos con antocianinas</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Macrocracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Star cracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Micro cracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>BER / base del fruto negra</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Incidencia del BER durante cultivo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Pitting</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Blossom end depth</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Brillo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Pudrición interna</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Intensidad de color externo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Tiempo de viraje de color</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Silvering</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Depresión de los hombros</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Productividad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Visión general de la variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de plantas por variedad</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de frutos comercializables</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso total de fruta cosechada</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos cosechados</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos Jumbo</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos XL</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos L</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos M</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos pequeños</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos cosechados 1era</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos cosechados 2da</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos descarte</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Botrytis</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 13. Sandía -->
     <record id="watermelon_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Sandía</field>
-        <field name="vegetable_id" ref="seeds.vegetable_watermelon"/>
+        <field name="vegetable_id" ref="seeds.vegetable_watermelon" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Sandía</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Sandía</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Número de campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Nombre de variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de observación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Precocidad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número Brix fruta H1</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de frutos por planta</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Firmeza en fruto maduro</td><td></td><td class="small">Escala descriptiva: suave a duro</td></tr>
+                            <tr><td class="fw-bold">Color de la pulpa</td><td></td><td class="small">Escala descriptiva: claro a oscuro</td></tr>
+                            <tr><td class="fw-bold">Fruto hueco</td><td></td><td class="small">Escala descriptiva: extremo a nada</td></tr>
+                            <tr><td class="fw-bold">Carga de frutos</td><td></td><td class="small">Escala descriptiva: baja a alta</td></tr>
+                            <tr><td class="fw-bold">Forma de fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Ancho de fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Largo de fruto</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cobertura de hojas</td><td></td><td class="small">Escala descriptiva: pobre a excelente</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">Escala descriptiva: malo a bueno</td></tr>
+                            <tr><td class="fw-bold">Peso de fruto</td><td></td><td class="small">Escala descriptiva: malo a bueno</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">Escala descriptiva: débil a fuerte</td></tr>
+                            <tr><td class="fw-bold">Puntos fuertes</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Puntos débiles</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Observaciones generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Número de campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Nombre de variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de observación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Precocidad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número Brix fruta H1</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza en fruto maduro</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: suave a duro</td>
-            </tr>
-            <tr>
-            <td ><strong>Color de la pulpa</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: claro a oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Fruto hueco</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: extremo a nada</td>
-            </tr>
-            <tr>
-            <td ><strong>Carga de frutos</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: baja a alta</td>
-            </tr>
-            <tr>
-            <td ><strong>Forma de fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Ancho de fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Largo de fruto</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura de hojas</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: pobre a excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: malo a bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: malo a bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: débil a fuerte</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos fuertes</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos débiles</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 14. Tomate Determinado -->
     <record id="determinated_tomate_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Tomate Determinado</field>
-        <field name="vegetable_id" ref="seeds.vegetable_determinated_tomate"/>
+        <field name="vegetable_id" ref="seeds.vegetable_determinated_tomate" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Tomate Determinado</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Tomate Determinado</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Código en campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Tamaño de fruto</td><td></td><td class="small">1 - Muy pequeño | 3 - Mixto | 5 - Moderado | 7 - Bueno | 9 - Muy bueno</td></tr>
+                            <tr><td class="fw-bold">Puntaje de color maduro</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Microcracking</td><td></td><td class="small">1 - Demasiado | 3 - Moderado | 5 - Un poco | 7 - Presente | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Cicatriz de tallo corcho</td><td></td><td class="small">1 - Muy grande | 3 - Grande | 5 - Significante | 7 - Pequeño | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Tomate con punta</td><td></td><td class="small">1 - Muy alargada | 3 - Alargada | 5 - Medio | 7 - Corto | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Cierre pistilar</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Balance</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Rendimiento de frutos</td><td></td><td class="small">1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tipo de cultivo</td><td></td><td class="small">1 - Muy corta | 3 - Corta | 5 - Media | 7 - Larga | 9 - Muy larga</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bueno | 9 - Muy buena</td></tr>
+                            <tr><td class="fw-bold">Cobertura foliar</td><td></td><td class="small">1 - Muy abierta | 3 - Abierta | 5 - Semiabierta | 7 - Semicerrada | 9 - Cerrada</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Brillo</td><td></td><td class="small">1 - Muy opaco | 3 - Opaco | 5 - Moderado | 7 - Brilloso | 9 - Muy brilloso</td></tr>
+                            <tr><td class="fw-bold">Cracking</td><td></td><td class="small">1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Pocos | 9 - Ninguno</td></tr>
+                            <tr><td class="fw-bold">Firmeza</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Presencia de BER / base negra</td><td></td><td class="small">Sí / No</td></tr>
+                            <tr><td class="fw-bold">Blotchy en maduración</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Formato de fruto Saladette</td><td></td><td class="small">1 - Redondeado | 3 - Corto aperado | 5 - Aperado | 7 - Cilíndrico | 9 - San Marzano</td></tr>
+                            <tr><td class="fw-bold">Número de frutos por planta</td><td></td><td class="small">Cantidad en unidades</td></tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Fortalezas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Código en campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Tamaño de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pequeño | 3 - Mixto | 5 - Moderado | 7 - Bueno | 9 - Muy bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntaje de color maduro</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Microcracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Demasiado | 3 - Moderado | 5 - Un poco | 7 - Presente | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cicatriz de tallo corcho</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy grande | 3 - Grande | 5 - Significante | 7 - Pequeño | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tomate con punta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy alargada | 3 - Alargada | 5 - Medio | 7 - Corto | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cierre pistilar</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Balance</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento de frutos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy pobre | 3 - Pobre | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tipo de cultivo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy corta | 3 - Corta | 5 - Media | 7 - Larga | 9 - Muy larga</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bueno | 9 - Muy buena</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura foliar</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy abierta | 3 - Abierta | 5 - Semiabierta | 7 - Semicerrada | 9 - Cerrada</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Brillo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy opaco | 3 - Opaco | 5 - Moderado | 7 - Brilloso | 9 - Muy brilloso</td>
-            </tr>
-            <tr>
-            <td ><strong>Cracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Pocos | 9 - Ninguno</td>
-            </tr>
-            <tr>
-            <td ><strong>Firmeza</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Presencia de BER / base negra</strong></td>
-            <td >&#160;</td>
-            <td >Sí / No</td>
-            </tr>
-            <tr>
-            <td ><strong>Blotchy en maduración</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Formato de fruto Saladette</strong></td>
-            <td >&#160;</td>
-            <td >1 - Redondeado | 3 - Corto aperado | 5 - Aperado | 7 - Cilíndrico | 9 - San Marzano</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de frutos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad en unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 15. Tomate Indeterminado -->
     <record id="indeterminated_tomato_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Tomate Indeterminado</field>
-        <field name="vegetable_id" ref="seeds.vegetable_indeterminated_tomato"/>
+        <field name="vegetable_id" ref="seeds.vegetable_indeterminated_tomato" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Tomate Indeterminado</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Tomate Indeterminado</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Número en el campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de evaluación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Tipo de cultivo</td><td></td><td class="small">1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td></tr>
+                            <tr><td class="fw-bold">Balance entre carga y vigor</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Precocidad</td><td></td><td class="small">1 - Muy tardía | 3 - Tardía | 5 - Medio | 7 - Temprana | 9 - Muy tardía</td></tr>
+                            <tr><td class="fw-bold">Hot Top Setting</td><td></td><td class="small">1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td></tr>
+                            <tr><td class="fw-bold">Longitud de la planta</td><td></td><td class="small">1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td></tr>
+                            <tr><td class="fw-bold">Rendimiento</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Número de racimos por planta</td><td></td><td class="small">Cantidad en unidades</td></tr>
+                            <tr><td class="fw-bold">Carga de frutos</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Rendimiento en calor</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Tolerancia de hormonas</td><td></td><td class="small">Sí / No</td></tr>
+                            <tr><td class="fw-bold">Cobertura foliar</td><td></td><td class="small">1 - Muy abierta | 3 - Abierta | 5 - Un poco abierta | 7 - Semi-cerrada | 9 - Cerrada</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td></tr>
+                            <tr><td class="fw-bold">Sanidad de la planta</td><td></td><td class="small">Unidad: %</td></tr>
+                            <tr><td class="fw-bold">Bacteria / pseudomonas / xanthomonas</td><td></td><td class="small">1 - 50-100% afectadas | 3 - 15-50% afectadas | 5 - 5-15% afectadas | 7 - 1-5% afectadas | 9 - 0%</td></tr>
+                            <tr><td class="fw-bold">Hombros verdes</td><td></td><td class="small">1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Algunos | 9 - Ninguno</td></tr>
+                            <tr><td class="fw-bold">Peso promedio</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Tamaño de fruto</td><td></td><td class="small">Unidad: cm</td></tr>
+                            <tr><td class="fw-bold">Formato de fruto</td><td></td><td class="small">1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td></tr>
+                            <tr><td class="fw-bold">Blotchy o manchado</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Fruto en punta</td><td></td><td class="small">1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td></tr>
+                            <tr><td class="fw-bold">Cracking</td><td></td><td class="small">1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Algunos | 9 - Ninguno</td></tr>
+                            <tr><td class="fw-bold">Micro cracking</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cicatriz de tallo corcho</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Cierre pistilar</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Número de lóculos</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Observaciones</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fortalezas / ventajas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Debilidades / desventajas</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Comentarios generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Número en el campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de evaluación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Tipo de cultivo</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy débil | 3 - Débil | 5 - Moderado | 7 - Vigoroso | 9 - Muy vigoroso</td>
-            </tr>
-            <tr>
-            <td ><strong>Balance entre carga y vigor</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Precocidad</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy tardía | 3 - Tardía | 5 - Medio | 7 - Temprana | 9 - Muy tardía</td>
-            </tr>
-            <tr>
-            <td ><strong>Hot Top Setting</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td>
-            </tr>
-            <tr>
-            <td ><strong>Longitud de la planta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy corto | 3 - Corto | 5 - Medio | 7 - Largo | 9 - Muy largo</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de racimos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad en unidades</td>
-            </tr>
-            <tr>
-            <td ><strong>Carga de frutos</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento en calor</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Tolerancia de hormonas</strong></td>
-            <td >&#160;</td>
-            <td >Sí / No</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura foliar</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy abierta | 3 - Abierta | 5 - Un poco abierta | 7 - Semi-cerrada | 9 - Cerrada</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muy mal | 3 - Mal | 5 - Medio | 7 - Bien | 9 - Muy bien</td>
-            </tr>
-            <tr>
-            <td ><strong>Sanidad de la planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: %</td>
-            </tr>
-            <tr>
-            <td ><strong>Bacteria / pseudomonas / xanthomonas</strong></td>
-            <td >&#160;</td>
-            <td >1 - 50-100% afectadas | 3 - 15-50% afectadas | 5 - 5-15% afectadas | 7 - 1-5% afectadas | 9 - 0%</td>
-            </tr>
-            <tr>
-            <td ><strong>Hombros verdes</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Algunos | 9 - Ninguno</td>
-            </tr>
-            <tr>
-            <td ><strong>Peso promedio</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: cm</td>
-            </tr>
-            <tr>
-            <td ><strong>Formato de fruto</strong></td>
-            <td >&#160;</td>
-            <td >1 - Pobre | 3 - Insuficiente | 5 - Moderado | 7 - Bueno | 9 - Excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Blotchy o manchado</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Fruto en punta</strong></td>
-            <td >&#160;</td>
-            <td >1 - Severo | 3 - Fuerte | 5 - Moderado | 7 - Leve | 9 - Ausente</td>
-            </tr>
-            <tr>
-            <td ><strong>Cracking</strong></td>
-            <td >&#160;</td>
-            <td >1 - Muchos | 3 - Varios | 5 - Moderado | 7 - Algunos | 9 - Ninguno</td>
-            </tr>
-            <tr>
-            <td ><strong>Micro cracking</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cicatriz de tallo corcho</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Cierre pistilar</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Número de lóculos</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fortalezas / ventajas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Debilidades / desventajas</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Comentarios generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
+    <!-- 16. Zapallo -->
     <record id="pumpkin_experiment_result_template" model="seed.experiment.result.template">
         <field name="name">Zapallo</field>
-        <field name="vegetable_id" ref="seeds.vegetable_pumpkin"/>
+        <field name="vegetable_id" ref="seeds.vegetable_pumpkin" />
         <field name="template" type="html">
-            <div>
-            <div>
-            <h3 style="margin:0 0 8px 0;">Zapallo</h3>
-            <p style="margin:0 0 12px 0;">Plantilla de resultados experimentales</p>
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h3 class="mb-1">Zapallo</h3>
+                    <p class="text-muted">Plantilla de resultados experimentales</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 35%;">Característica</th>
+                                <th style="width: 25%;">Valor</th>
+                                <th style="width: 40%;">Parámetro / referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Datos generales</td>
+                            </tr>
+                            <tr><td class="fw-bold">Número de campo</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Nombre de variedad</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Fecha de observación</td><td></td><td></td></tr>
+                            <tr class="table-secondary">
+                                <td colspan="3" class="fw-bold">Evaluación</td>
+                            </tr>
+                            <tr><td class="fw-bold">Color de fruto cosechado</td><td></td><td class="small">Escala descriptiva: claro a oscuro</td></tr>
+                            <tr><td class="fw-bold">Cantidad de frutos cosechados</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Precocidad de fruto</td><td></td><td class="small">Escala descriptiva: tardío a temprano</td></tr>
+                            <tr><td class="fw-bold">Calidad de fruto</td><td></td><td class="small">Escala descriptiva: malo a bueno</td></tr>
+                            <tr><td class="fw-bold">Uniformidad de fruto</td><td></td><td class="small">Escala descriptiva: malo a bueno</td></tr>
+                            <tr><td class="fw-bold">Rendimiento de frutos comerciales</td><td></td><td class="small">Cantidad</td></tr>
+                            <tr><td class="fw-bold">Rendimiento de frutos por planta</td><td></td><td class="small">Unidad: kg</td></tr>
+                            <tr><td class="fw-bold">Tamaño de cavidad</td><td></td><td class="small">Escala descriptiva: pequeño a grande</td></tr>
+                            <tr><td class="fw-bold">Cicatriz de pudrición apical</td><td></td><td class="small">Escala descriptiva: grande a pequeño</td></tr>
+                            <tr><td class="fw-bold">Color de pulpa del fruto</td><td></td><td class="small">Escala descriptiva: claro a oscuro</td></tr>
+                            <tr><td class="fw-bold">Acostillamiento de fruto</td><td></td><td class="small">Escala descriptiva: extremo a nada</td></tr>
+                            <tr><td class="fw-bold">Cobertura de hojas</td><td></td><td class="small">Escala descriptiva: pobre a excelente</td></tr>
+                            <tr><td class="fw-bold">Vigor de planta</td><td></td><td class="small">Escala descriptiva: débil a fuerte</td></tr>
+                            <tr><td class="fw-bold">Valoración total</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Puntos fuertes</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Puntos débiles</td><td></td><td></td></tr>
+                            <tr><td class="fw-bold">Observaciones generales</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-            <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
-            <thead><tr>
-            <th style="text-align:left; background:#f3f4f6;">Característica</th>
-            <th style="text-align:left; background:#f3f4f6;">Valor</th>
-            <th style="text-align:left; background:#f3f4f6;">Parámetro / referencia</th>
-            </tr></thead><tbody>
-            <tr><td colspan="3" style="background:#f8f9fa;">Datos generales</td></tr>
-            <tr>
-            <td ><strong>Número de campo</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Nombre de variedad</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Fecha de observación</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr><td colspan="3" style="background:#f8f9fa;">Evaluación</td></tr>
-            <tr>
-            <td ><strong>Color de fruto cosechado</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: claro a oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Cantidad de frutos cosechados</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Precocidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: tardío a temprano</td>
-            </tr>
-            <tr>
-            <td ><strong>Calidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: malo a bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Uniformidad de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: malo a bueno</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento de frutos comerciales</strong></td>
-            <td >&#160;</td>
-            <td >Cantidad</td>
-            </tr>
-            <tr>
-            <td ><strong>Rendimiento de frutos por planta</strong></td>
-            <td >&#160;</td>
-            <td >Unidad: kg</td>
-            </tr>
-            <tr>
-            <td ><strong>Tamaño de cavidad</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: pequeño a grande</td>
-            </tr>
-            <tr>
-            <td ><strong>Cicatriz de pudrición apical</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: grande a pequeño</td>
-            </tr>
-            <tr>
-            <td ><strong>Color de pulpa del fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: claro a oscuro</td>
-            </tr>
-            <tr>
-            <td ><strong>Acostillamiento de fruto</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: extremo a nada</td>
-            </tr>
-            <tr>
-            <td ><strong>Cobertura de hojas</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: pobre a excelente</td>
-            </tr>
-            <tr>
-            <td ><strong>Vigor de planta</strong></td>
-            <td >&#160;</td>
-            <td >Escala descriptiva: débil a fuerte</td>
-            </tr>
-            <tr>
-            <td ><strong>Valoración total</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos fuertes</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Puntos débiles</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            <tr>
-            <td ><strong>Observaciones generales</strong></td>
-            <td >&#160;</td>
-            <td >&#160;</td>
-            </tr>
-            </tbody></table></div></div>
         </field>
     </record>
+
 </odoo>
