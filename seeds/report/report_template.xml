@@ -11,47 +11,50 @@
                             <span t-field="o.order_number"/>
                         </h2>
                         
-                        <div class="row mt-4 mb-4" id="informacion_general">
-                            <div class="col-auto mw-100 mb-2" t-if="o.destinatary_name">
+                        <div class="row mt-4 mb-3" id="general_information_row_1">
+                            <div class="col-4 text-break" t-if="o.destinatary_name">
                                 <strong>Destinatario:</strong>
-                                <p class="m-0" t-field="o.destinatary_name"/>
+                                <div t-field="o.destinatary_name"/>
                             </div>
-                            <div class="col-auto mw-100 mb-2" t-if="o.destinatary_city">
+                            <div class="col-4 text-break" t-if="o.destinatary_city">
                                 <strong>Localidad:</strong>
-                                <p class="m-0" t-field="o.destinatary_city"/>
+                                <div t-field="o.destinatary_city"/>
                             </div>
-                            <div class="col-auto mw-100 mb-2" t-if="o.deperture_date">
+                            <div class="col-4 text-break" t-if="o.deperture_date">
                                 <strong>Fecha de envío:</strong>
-                                <p class="m-0" t-field="o.deperture_date"/>
+                                <div t-field="o.deperture_date"/>
                             </div>
-                            <div class="col-auto mw-100 mb-2" t-if="o.arrival_date">
+                        </div>
+
+                        <div class="row mb-5" id="general_information_row_2">
+                            <div class="col-4 text-break" t-if="o.arrival_date">
                                 <strong>Fecha de recepción:</strong>
-                                <p class="m-0" t-field="o.arrival_date"/>
+                                <div t-field="o.arrival_date"/>
                             </div>
-                            <div class="col-auto mw-100 mb-2" t-if="o.batch">
+                            <div class="col-4 text-break" t-if="o.batch">
                                 <strong>Batch:</strong>
-                                <p class="m-0" t-field="o.batch"/>
+                                <div t-field="o.batch"/>
                             </div>
                         </div>
 
                         <table class="table table-sm o_main_table mt-4">
-                            <thead>
+                            <thead class="bg-light">
                                 <tr>
-                                    <th name="th_vegetable">Hortaliza</th>
-                                    <th name="th_hibrid">Híbrido</th>
-                                    <th name="th_code">Código</th>
-                                    <th name="th_amount" class="text-right">Cantidad</th>
-                                    <th name="th_package">Presentación</th>
+                                    <th name="th_vegetable" class="p-2">Hortaliza</th>
+                                    <th name="th_hibrid" class="p-2">Híbrido</th>
+                                    <th name="th_code" class="p-2">Código</th>
+                                    <th name="th_amount" class="text-end p-2">Cantidad</th>
+                                    <th name="th_package" class="p-2">Presentación</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="o.item_ids" t-as="line">
                                     <tr>
-                                        <td><span t-field="line.vegetable"/></td>
-                                        <td><span t-field="line.hibrid_name"/></td>
-                                        <td><span t-field="line.hibrid_code"/></td>
-                                        <td class="text-right"><span t-field="line.amount"/></td>
-                                        <td><span t-field="line.package_type"/></td>
+                                        <td class="p-2"><span t-field="line.vegetable"/></td>
+                                        <td class="p-2"><span t-field="line.hibrid_name"/></td>
+                                        <td class="p-2"><span t-field="line.hibrid_code"/></td>
+                                        <td class="text-end p-2"><span t-field="line.amount"/></td>
+                                        <td class="p-2"><span t-field="line.package_type"/></td>
                                     </tr>
                                 </t>
                             </tbody>

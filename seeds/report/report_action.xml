@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="action_report_seed_deperture_order" model="ir.actions.report">
-        <field name="name">Reporte de Orden de Salida</field>
+        <field name="name">Imprimir Orden/es de Salida</field>
         <field name="model">seed.deperture.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">seeds.report_seed_deperture_order_template</field>
