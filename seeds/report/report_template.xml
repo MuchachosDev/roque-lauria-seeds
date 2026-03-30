@@ -5,7 +5,62 @@
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <h2>Reporte de Orden de salida <span t-field="o.order_number"/></h2>
+                        
+                        <h2 class="mt-4 mb-4">
+                            <span>Orden de Salida:</span>
+                            <span t-field="o.order_number"/>
+                        </h2>
+                        
+                        <div class="row mt-4 mb-4" id="informacion_general">
+                            <div class="col-auto mw-100 mb-2" t-if="o.destinatary_name">
+                                <strong>Destinatario:</strong>
+                                <p class="m-0" t-field="o.destinatary_name"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.destinatary_city">
+                                <strong>Localidad:</strong>
+                                <p class="m-0" t-field="o.destinatary_city"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.deperture_date">
+                                <strong>Fecha de envío:</strong>
+                                <p class="m-0" t-field="o.deperture_date"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.arrival_date">
+                                <strong>Fecha de recepción:</strong>
+                                <p class="m-0" t-field="o.arrival_date"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.batch">
+                                <strong>Batch:</strong>
+                                <p class="m-0" t-field="o.batch"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm o_main_table mt-4">
+                            <thead>
+                                <tr>
+                                    <th name="th_vegetable">Hortaliza</th>
+                                    <th name="th_hibrid">Híbrido</th>
+                                    <th name="th_code">Código</th>
+                                    <th name="th_amount" class="text-right">Cantidad</th>
+                                    <th name="th_package">Presentación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.item_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.vegetable"/></td>
+                                        <td><span t-field="line.hibrid_name"/></td>
+                                        <td><span t-field="line.hibrid_code"/></td>
+                                        <td class="text-right"><span t-field="line.amount"/></td>
+                                        <td><span t-field="line.package_type"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="mt-4" t-if="o.observation">
+                            <strong>Observaciones:</strong>
+                            <div t-field="o.observation"/>
+                        </div>
                         
                     </div>
                 </t>
