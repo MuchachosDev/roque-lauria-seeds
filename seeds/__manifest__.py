@@ -20,6 +20,7 @@
         "views/menu.xml",
         # Reports
         "report/report_seed_deperture_order.xml",
+        "report/report_seed_result_order.xml",
         # Pre-loaded data
         "data/sequence.xml",
         "data/experimental_result_template.xml",
