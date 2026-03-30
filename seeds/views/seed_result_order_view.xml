@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- Form view -->
     <record id="seed_result_order_form_view" model="ir.ui.view">
         <field name="name">seed.result.order.form</field>
         <field name="model">seed.result.order</field>
@@ -12,60 +13,64 @@
                             <field name="order_number" readonly="1" />
                         </h1>
                     </div>
-
                     <group>
-                        <group string="Datos del ensayo">
+                        <group string="Datos generales del ensayo">
                             <field name="farmer" />
                             <field name="distributor" />
+                            <label
+                                for="lat_coord"
+                                string="Coordenadas (Lat/Lon)"
+                            />
+                            <div class="o_row">
+                                <field name="lat_coord" placeholder="Latitud" />
+                                <field
+                                    name="lon_coord"
+                                    placeholder="Longitud"
+                                />
+                            </div>
                             <field name="season" />
                             <field name="test_fiability" />
                             <field name="lines_amount" />
                             <field name="harvest_method" />
                             <field name="substratum" />
                         </group>
-
-                        <group string="Fechas y ubicación">
+                        <group string="Fechas importantes">
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="seed_date" />
                             <field name="replant_date" />
-                            <label for="lat_coord" string="Coordenadas" />
-                            <div class="o_row">
-                                <field name="lat_coord" placeholder="Latitud" />
-                                <field name="lon_coord" placeholder="Longitud" />
-                            </div>
                         </group>
                     </group>
-
                     <notebook>
                         <page string="Resultados por variedad">
                             <field name="item_ids">
-                                <list editable="bottom">
-                                    <field name="hibrid_id" />
-                                    <field name="vegetable_name" readonly="1" />
+                                <list>
                                     <field name="land_code" />
                                     <field name="evaluation_date" />
+                                    <field name="hibrid_id" />
+                                    <field name="vegetable_name" />
                                 </list>
-
-                                <form string="Resultado por variedad">
+                                <!-- Definimos cómo se ve el formulario al hacer clic en un item -->
+                                <form string="Resultado de Variedad">
                                     <sheet>
                                         <group>
-                                            <group string="Datos básicos">
+                                            <group>
                                                 <field name="hibrid_id" />
-                                                <field name="vegetable_name" readonly="1" />
+                                                <field name="vegetable_name" />
+                                            </group>
+                                            <group>
                                                 <field name="land_code" />
                                                 <field name="evaluation_date" />
                                             </group>
-
-                                            <group string="Adjuntos">
-                                                <field name="photo" widget="many2many_binary" />
-                                            </group>
                                         </group>
-
                                         <notebook>
-                                            <page string="Evaluación" invisible="not hibrid_id">
-                                                <field name="experiment_result" widget="html"
-                                                    nolabel="1" />
+                                            <page string="Evaluación Experimental">
+                                                <!-- nolabel="1" es la clave para que el HTML tome el 100% del ancho -->
+                                                <field name="experiment_result" widget="html" nolabel="1" />
+                                            </page>
+                                            <page string="Fotos y Videos">
+                                                <!-- Widget nativo para subir múltiples imágenes de forma visual -->
+                                                <field name="photo" widget="many2many_binary" nolabel="1"/>
                                             </page>
                                         </notebook>
                                     </sheet>
@@ -78,6 +83,7 @@
         </field>
     </record>
 
+    <!-- List view -->
     <record id="seed_result_order_list_view" model="ir.ui.view">
         <field name="name">seed.result.order.list</field>
         <field name="model">seed.result.order</field>
@@ -92,6 +98,7 @@
         </field>
     </record>
 
+    <!-- Action -->
     <record id="seed_result_order_action" model="ir.actions.act_window">
         <field name="name">Ordenes de resultado</field>
         <field name="res_model">seed.result.order</field>
