@@ -6,7 +6,7 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">seed.report_seed_deperture_order_template</field>
         <field name="report_file">seed.report_seed_deperture_order_template</field>
-        <field name="binding_model_id" ref="seed_deperture_order"/>
+        <field name="binding_model_id" ref="model_seed_deperture_order"/>
         <field name="binding_type">report</field>
     </record>
 </odoo>
