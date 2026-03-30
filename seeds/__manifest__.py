@@ -23,7 +23,7 @@
         "report/report_seed_result_order.xml",
         # Pre-loaded data
         "data/sequence.xml",
-        "data/experimental_result_template.xml",
         "data/vegetable.xml",
+        "data/experimental_result_template.xml",
     ],
 }
