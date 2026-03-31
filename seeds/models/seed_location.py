@@ -8,7 +8,8 @@ class SeedLocation(models.Model):
     name = fields.Char(string="Nombre de la localidad")
     state_id = fields.Many2one(
         string="Provincia",
-        comodel_name="res.country.state"
+        comodel_name="res.country.state",
+        domain="[('country_id', '=', company_id.country_id)]"
     )
     deperture_order_ids = fields.One2many(
         string="Ordenes de salida",

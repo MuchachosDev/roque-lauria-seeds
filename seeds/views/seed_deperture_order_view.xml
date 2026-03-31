@@ -18,9 +18,18 @@
                             <field name="arrival_date" />
                             <field name="batch" />
                         </group>
-                        <group string="Datos del receptor">
-                            <field name="destinatary_name" />
-                            <field name="destinatary_city" />
+                        <group string="Datos de recepción">
+                            <field name="destinatary_name">
+                                <form string="Destinatario">
+                                    <field name="name"/>
+                                </form>
+                            </field>
+                            <field name="destinatary_city">
+                                <form string="Localidad">
+                                    <field name="name"/>
+                                    <field name="state_id"/>
+                                </form>
+                            </field>
                         </group>
                     </group>
                     <notebook>
