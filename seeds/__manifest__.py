@@ -11,6 +11,8 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         # Views
+        "views/seed_destinatary_view.xml",
+        "views/seed_location_view.xml",
         "views/seed_arrival_order_view.xml",
         "views/seed_company_view.xml",
         "views/seed_deperture_order_view.xml",

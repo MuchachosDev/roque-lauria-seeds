@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seed_location_form_view" model="ir.ui.view">
+        <field name="name">seed.location.form</field>
+        <field name="model">seed.location</field>
+        <field name="arch" type="xml">
+            <form string="Localidad">
+                <group>
+                    <field name="name"/>
+                    <field name="state_id"/>
+                    <field name="company_id" invisible="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

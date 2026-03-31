@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seed_destinatary_form_view" model="ir.ui.view">
+        <field name="name">seed.destinatary.form</field>
+        <field name="model">seed.destinatary</field>
+        <field name="arch" type="xml">
+            <form string="Localidad">
+                <field name="name"/>
+            </form>
+        </field>
+    </record>
+</odoo>
