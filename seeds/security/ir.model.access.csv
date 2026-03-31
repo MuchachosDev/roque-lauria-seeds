@@ -8,9 +8,13 @@ manager_access_seed_deperture_order_item,seed.deperture.order.item.manager,model
 manager_access_seed_result_order,seed.result.order.manager,model_seed_result_order,group_seed_manager,1,1,1,1
 manager_access_seed_result_order_item,seed.result.order.item.manager,model_seed_result_order_item,group_seed_manager,1,1,1,1
 manager_access_seed_experiment_result_template,seed.experiment_result.template.manager,model_seed_experiment_result_template,group_seed_manager,1,1,1,1
+manager_access_seed_destinatary,seed.destinatary.manager,model_seed_destinatary,group_seed_manager,1,1,1,1
+manager_access_seed_location,seed.location.manager,model_seed_location,group_seed_manager,1,1,1,1
 engineer_access_seed_hibrid,seed.hibrid.engineer,model_seed_hibrid,group_seed_engineer,1,0,0,0
 engineer_access_seed_vegetable,seed.vegetable.engineer,model_seed_vegetable,group_seed_engineer,1,0,0,0
 engineer_access_seed_deperture_order,seed.deperture.order.engineer,model_seed_deperture_order,group_seed_engineer,1,1,0,0
 engineer_access_seed_deperture_order_item,seed.deperture.order.item.engineer,model_seed_deperture_order_item,group_seed_engineer,1,0,0,0
 engineer_access_seed_result_order,seed.result.order.engineer,model_seed_result_order,group_seed_engineer,1,1,1,1
 engineer_access_seed_result_order_item,seed.result.order.item.engineer,model_seed_result_order_item,group_seed_engineer,1,1,1,1
+engineer_access_seed_destinatary,seed.destinatary.engineer,model_seed_destinatary,group_seed_engineer,1,0,0,0
+engineer_access_seed_location,seed.location.engineer,model_seed_location,group_seed_engineer,1,0,0,0

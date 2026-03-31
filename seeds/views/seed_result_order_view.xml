@@ -50,7 +50,6 @@
                                     <field name="hibrid_id" />
                                     <field name="vegetable_name" />
                                 </list>
-                                <!-- Definimos cómo se ve el formulario al hacer clic en un item -->
                                 <form string="Resultado de Variedad">
                                     <sheet>
                                         <group>
@@ -65,11 +64,9 @@
                                         </group>
                                         <notebook>
                                             <page string="Evaluación Experimental">
-                                                <!-- nolabel="1" es la clave para que el HTML tome el 100% del ancho -->
                                                 <field name="experiment_result" widget="html" nolabel="1" />
                                             </page>
                                             <page string="Fotos y Videos">
-                                                <!-- Widget nativo para subir múltiples imágenes de forma visual -->
                                                 <field name="photo" widget="many2many_binary" nolabel="1"/>
                                             </page>
                                         </notebook>
