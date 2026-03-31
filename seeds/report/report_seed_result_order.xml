@@ -4,101 +4,160 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
+
+                    <!-- =========================================================
+                         PÁGINA 1+: DATOS GENERALES + RESUMEN
+                    ========================================================== -->
                     <div class="page">
-                        
-                        <h2 class="mt-4 mb-4">
-                            <span>Orden de Resultados:</span>
-                            <span t-field="o.order_number"/>
+
+                        <h2 class="mt-2 mb-4"
+                            style="border-bottom: 2px solid #4a4a4a; padding-bottom: 6px; color:#2f2f2f;">
+                            Orden de Resultados: <span t-field="o.order_number"/>
                         </h2>
-                        
-                        <div class="row mt-4 mb-3">
-                            <div class="col-4 mb-3 text-break" t-if="o.farmer">
-                                <strong>Agricultor:</strong>
-                                <div t-field="o.farmer"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.distributor">
-                                <strong>Distribuidor:</strong>
-                                <div t-field="o.distributor"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.season">
-                                <strong>Temporada:</strong>
-                                <div t-field="o.season"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.start_date">
-                                <strong>Fecha de inicio:</strong>
-                                <div t-field="o.start_date"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.end_date">
-                                <strong>Fecha de fin:</strong>
-                                <div t-field="o.end_date"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.seed_date">
-                                <strong>Fecha de siembra:</strong>
-                                <div t-field="o.seed_date"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.replant_date">
-                                <strong>Transplante:</strong>
-                                <div t-field="o.replant_date"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.substratum">
-                                <strong>Sustrato:</strong>
-                                <div t-field="o.substratum"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.harvest_method">
-                                <strong>Método de cosecha:</strong>
-                                <div t-field="o.harvest_method"/>
-                            </div>
-                            <div class="col-4 mb-3 text-break" t-if="o.test_fiability">
-                                <strong>Confiabilidad:</strong>
-                                <div t-field="o.test_fiability"/>
-                            </div>
-                        </div>
 
-                        <div class="mt-5">
-                            <h3 class="border-bottom pb-2 mb-4">Evaluación de Variedades</h3>
-                            
-                            <t t-foreach="o.item_ids" t-as="line">
-                                
-                                <div style="page-break-inside: avoid;" class="mb-5">
-                                    
-                                    <div class="bg-light p-3 mb-3 border">
-                                        <h4 class="m-0 text-primary">
-                                            <span t-field="line.vegetable_name"/> - <span t-field="line.hibrid_id.name"/>
-                                        </h4>
-                                        <div class="row mt-2 text-muted">
-                                            <div class="col-auto">
-                                                <strong>Cód. Campo:</strong> <span t-field="line.land_code"/>
-                                            </div>
-                                            <div class="col-auto">
-                                                <strong>Fecha Eval.:</strong> <span t-field="line.evaluation_date"/>
-                                            </div>
-                                        </div>
+                        <!-- Datos generales SIN tabla -->
+                        <div style="margin-bottom:24px;">
+                            <div style="background-color:#4a4a4a; color:#ffffff; padding:6px 10px; font-size:11pt; font-weight:bold; margin-bottom:10px;">
+                                Información General del Ensayo
+                            </div>
+
+                            <div style="font-size:10pt; line-height:1.8; color:#2f2f2f;">
+                                <div style="width:100%; overflow:hidden;">
+                                    <div style="float:left; width:48%; padding-right:2%;">
+                                        <div><span style="font-weight:bold;">Agricultor:</span> <span t-field="o.farmer"/></div>
+                                        <div><span style="font-weight:bold;">Temporada:</span> <span t-field="o.season"/></div>
+                                        <div><span style="font-weight:bold;">Fecha de inicio:</span> <span t-field="o.start_date"/></div>
+                                        <div><span style="font-weight:bold;">Fecha de siembra:</span> <span t-field="o.seed_date"/></div>
+                                        <div><span style="font-weight:bold;">Sustrato:</span> <span t-field="o.substratum"/></div>
+                                        <div><span style="font-weight:bold;">Cant. líneas plantadas:</span> <span t-field="o.lines_amount"/></div>
+                                        <div><span style="font-weight:bold;">Latitud:</span> <span t-field="o.lat_coord"/></div>
                                     </div>
 
-                                    <div class="experiment-result-container">
-                                        <div t-field="line.experiment_result"/>
+                                    <div style="float:right; width:48%;">
+                                        <div><span style="font-weight:bold;">Distribuidor:</span> <span t-field="o.distributor"/></div>
+                                        <div><span style="font-weight:bold;">Confiabilidad del ensayo:</span> <span t-field="o.test_fiability"/></div>
+                                        <div><span style="font-weight:bold;">Fecha de finalización:</span> <span t-field="o.end_date"/></div>
+                                        <div><span style="font-weight:bold;">Fecha de transplante:</span> <span t-field="o.replant_date"/></div>
+                                        <div><span style="font-weight:bold;">Método de cosecha:</span> <span t-field="o.harvest_method"/></div>
+                                        <div><span style="font-weight:bold;">Longitud:</span> <span t-field="o.lon_coord"/></div>
                                     </div>
-
-                                    <t t-if="line.photo">
-                                        <div class="mt-4">
-                                            <h5>Evidencia Fotográfica</h5>
-                                            <div class="row">
-                                                <t t-foreach="line.photo" t-as="img">
-                                                    <t t-if="img.mimetype.startswith('image/')">
-                                                        <div class="col-4 mb-3">
-                                                            <img t-att-src="'/web/image/%s' % img.id" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;"/>
-                                                        </div>
-                                                    </t>
-                                                </t>
-                                            </div>
-                                        </div>
-                                    </t>
-                                    
                                 </div>
-                            </t>
+                                <div style="clear:both;"></div>
+                            </div>
                         </div>
-                        
+
+                        <!-- Resumen -->
+                        <div style="margin-top:20px;">
+                            <div style="background-color:#5b5b5b; color:#ffffff; padding:6px 10px; font-size:10.5pt; font-weight:bold; margin-bottom:0;">
+                                Híbridos analizados
+                            </div>
+
+                            <table style="width:100%; border-collapse:collapse; font-size:10pt; color:#2f2f2f;">
+                                <thead>
+                                    <tr style="background-color:#707070; color:#ffffff;">
+                                        <th style="padding:6px 8px; width:5%; border:1px solid #9a9a9a; text-align:center;">#</th>
+                                        <th style="padding:6px 8px; width:30%; border:1px solid #9a9a9a;">Hortaliza</th>
+                                        <th style="padding:6px 8px; width:30%; border:1px solid #9a9a9a;">Híbrido / Variedad</th>
+                                        <th style="padding:6px 8px; width:20%; border:1px solid #9a9a9a;">Código de campo</th>
+                                        <th style="padding:6px 8px; width:15%; border:1px solid #9a9a9a;">Fecha de eval.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.item_ids" t-as="line">
+                                        <tr t-attf-style="background-color: {{ '#ffffff' if line_index % 2 == 0 else '#efefef' }};">
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd; text-align:center;">
+                                                <t t-esc="line_index + 1"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.vegetable_name"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.hibrid_id"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.land_code"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.evaluation_date"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+                    <!-- =========================================================
+                         DETALLE: CADA HÍBRIDO EN PÁGINA NUEVA
+                    ========================================================== -->
+                    <t t-foreach="o.item_ids" t-as="line">
+                        <div class="page" style="page-break-before:always;">
+
+                            <div style="background-color:#4a4a4a; color:#ffffff; padding:7px 10px; font-size:12pt; font-weight:bold; margin-bottom:10px;">
+                                <span t-field="line.vegetable_name"/> — <span t-field="line.hibrid_id.name"/>
+                            </div>
+
+                            <!-- Datos del híbrido, sin número de orden -->
+                            <div style="margin-bottom:12px; font-size:10pt; color:#2f2f2f; line-height:1.7;">
+                                <div style="width:100%; overflow:hidden;">
+                                    <div style="float:left; width:48%; padding-right:2%;">
+                                        <div><span style="font-weight:bold;">Código de campo:</span> <span t-field="line.land_code"/></div>
+                                        <div><span style="font-weight:bold;">Agricultor:</span> <span t-field="o.farmer"/></div>
+                                    </div>
+                                    <div style="float:right; width:48%;">
+                                        <div><span style="font-weight:bold;">Fecha de evaluación:</span> <span t-field="line.evaluation_date"/></div>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+
+                            <!-- Contenido del experimento -->
+                            <div style="font-size:9.5pt;">
+                                <t t-out="line.experiment_result"/>
+                            </div>
+
+                            <!-- Evidencia fotográfica -->
+                            <t t-if="line.photo">
+                                <div style="margin-top:16px; page-break-inside:avoid;">
+                                    <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+                                        <tr style="background-color:#444444; color:#ffffff;">
+                                            <td style="padding:5px 10px; font-weight:bold;">
+                                                Evidencia fotográfica
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <t t-set="photos" t-value="line.photo.filtered(lambda a: a.mimetype and a.mimetype.startswith('image/'))"/>
+                                <t t-foreach="range(0, len(photos), 3)" t-as="chunk_start">
+                                    <div style="page-break-inside:avoid; margin-bottom:8px;">
+                                        <table style="width:100%; border-collapse:collapse;">
+                                            <tr>
+                                                <t t-foreach="photos[chunk_start:chunk_start+3]" t-as="img">
+                                                    <td style="width:33%; padding:4px; text-align:center; vertical-align:top;">
+                                                        <img t-att-src="'/web/image/%s' % img.id"
+                                                             style="max-width:100%; max-height:180px; border:1px solid #bbb; padding:3px;"/>
+                                                        <div style="font-size:8pt; color:#666; margin-top:3px;">
+                                                            <t t-esc="img.name"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="len(photos[chunk_start:chunk_start+3]) == 1">
+                                                    <td style="width:33%;"></td>
+                                                    <td style="width:33%;"></td>
+                                                </t>
+                                                <t t-if="len(photos[chunk_start:chunk_start+3]) == 2">
+                                                    <td style="width:33%;"></td>
+                                                </t>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </t>
+                            </t>
+
+                        </div>
+                    </t>
+
                 </t>
             </t>
         </t>
@@ -110,7 +169,7 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">seeds.report_seed_result_order_template</field>
         <field name="report_file">seeds.report_seed_result_order_template</field>
-        <field name="binding_model_id" ref="model_seed_result_order" />
+        <field name="binding_model_id" ref="model_seed_result_order"/>
         <field name="binding_type">report</field>
         <field name="print_report_name">'Resultados_%s' % (object.order_number)</field>
     </record>

@@ -4,68 +4,110 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
+
                     <div class="page">
-                        
-                        <h2 class="mt-4 mb-4">
-                            <span>Orden de Salida:</span>
-                            <span t-field="o.order_number"/>
+
+                        <!-- TÍTULO -->
+                        <h2 class="mt-2 mb-4"
+                            style="border-bottom: 2px solid #4a4a4a; padding-bottom: 6px; color:#2f2f2f;">
+                            Orden de Salida: <span t-field="o.order_number"/>
                         </h2>
-                        
-                        <div class="row mt-4 mb-3" id="general_information_row_1">
-                            <div class="col-4 text-break" t-if="o.destinatary_name">
-                                <strong>Destinatario:</strong>
-                                <div t-field="o.destinatary_name"/>
+
+                        <!-- DATOS GENERALES (SIN TABLA) -->
+                        <div style="margin-bottom:24px;">
+                            <div style="background-color:#4a4a4a; color:#ffffff; padding:6px 10px; font-size:11pt; font-weight:bold; margin-bottom:10px;">
+                                Información General
                             </div>
-                            <div class="col-4 text-break" t-if="o.destinatary_city">
-                                <strong>Localidad:</strong>
-                                <div t-field="o.destinatary_city"/>
-                            </div>
-                            <div class="col-4 text-break" t-if="o.deperture_date">
-                                <strong>Fecha de envío:</strong>
-                                <div t-field="o.deperture_date"/>
+
+                            <div style="font-size:10pt; line-height:1.8; color:#2f2f2f;">
+                                <div style="width:100%; overflow:hidden;">
+
+                                    <div style="float:left; width:48%; padding-right:2%;">
+                                        <div t-if="o.destinatary_name">
+                                            <span style="font-weight:bold;">Destinatario:</span>
+                                            <span t-field="o.destinatary_name"/>
+                                        </div>
+
+                                        <div t-if="o.destinatary_city">
+                                            <span style="font-weight:bold;">Localidad:</span>
+                                            <span t-field="o.destinatary_city"/>
+                                        </div>
+
+                                        <div t-if="o.deperture_date">
+                                            <span style="font-weight:bold;">Fecha de envío:</span>
+                                            <span t-field="o.deperture_date"/>
+                                        </div>
+                                    </div>
+
+                                    <div style="float:right; width:48%;">
+                                        <div t-if="o.arrival_date">
+                                            <span style="font-weight:bold;">Fecha de recepción:</span>
+                                            <span t-field="o.arrival_date"/>
+                                        </div>
+
+                                        <div t-if="o.batch">
+                                            <span style="font-weight:bold;">Batch:</span>
+                                            <span t-field="o.batch"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div style="clear:both;"></div>
                             </div>
                         </div>
 
-                        <div class="row mb-5" id="general_information_row_2">
-                            <div class="col-4 text-break" t-if="o.arrival_date">
-                                <strong>Fecha de recepción:</strong>
-                                <div t-field="o.arrival_date"/>
+                        <!-- TABLA DE ITEMS -->
+                        <div style="margin-top:10px;">
+                            <div style="background-color:#5b5b5b; color:#ffffff; padding:6px 10px; font-size:10.5pt; font-weight:bold; margin-bottom:0;">
+                                Detalle de envío
                             </div>
-                            <div class="col-4 text-break" t-if="o.batch">
-                                <strong>Batch:</strong>
-                                <div t-field="o.batch"/>
-                            </div>
-                        </div>
 
-                        <table class="table table-sm o_main_table mt-4">
-                            <thead class="bg-light">
-                                <tr>
-                                    <th name="th_vegetable" class="p-2">Hortaliza</th>
-                                    <th name="th_hibrid" class="p-2">Híbrido</th>
-                                    <th name="th_code" class="p-2">Código</th>
-                                    <th name="th_amount" class="p-2">Cantidad</th>
-                                    <th name="th_package" class="p-2">Presentación</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <t t-foreach="o.item_ids" t-as="line">
-                                    <tr>
-                                        <td class="p-2"><span t-field="line.vegetable"/></td>
-                                        <td class="p-2"><span t-field="line.hibrid_name"/></td>
-                                        <td class="p-2"><span t-field="line.hibrid_code"/></td>
-                                        <td class="p-2"><span t-field="line.amount"/></td>
-                                        <td class="p-2"><span t-field="line.package_type"/></td>
+                            <table style="width:100%; border-collapse:collapse; font-size:10pt; color:#2f2f2f;">
+                                <thead>
+                                    <tr style="background-color:#707070; color:#ffffff;">
+                                        <th style="padding:6px 8px; border:1px solid #9a9a9a;">Hortaliza</th>
+                                        <th style="padding:6px 8px; border:1px solid #9a9a9a;">Híbrido</th>
+                                        <th style="padding:6px 8px; border:1px solid #9a9a9a;">Código</th>
+                                        <th style="padding:6px 8px; border:1px solid #9a9a9a; text-align:right;">Cantidad</th>
+                                        <th style="padding:6px 8px; border:1px solid #9a9a9a;">Presentación</th>
                                     </tr>
-                                </t>
-                            </tbody>
-                        </table>
-
-                        <div class="mt-4" t-if="o.observation">
-                            <strong>Observaciones:</strong>
-                            <div t-field="o.observation"/>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.item_ids" t-as="line">
+                                        <tr t-attf-style="background-color: {{ '#ffffff' if line_index % 2 == 0 else '#efefef' }};">
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.vegetable"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.hibrid_name"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.hibrid_code"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd; text-align:right;">
+                                                <span t-field="line.amount"/>
+                                            </td>
+                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
+                                                <span t-field="line.package_type"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
                         </div>
-                        
+
+                        <!-- OBSERVACIONES -->
+                        <div style="margin-top:20px;" t-if="o.observation">
+                            <div style="background-color:#4a4a4a; color:#ffffff; padding:6px 10px; font-weight:bold;">
+                                Observaciones
+                            </div>
+                            <div style="padding:8px 10px; border:1px solid #bdbdbd; border-top:none; font-size:10pt;">
+                                <span t-field="o.observation"/>
+                            </div>
+                        </div>
+
                     </div>
+
                 </t>
             </t>
         </t>
