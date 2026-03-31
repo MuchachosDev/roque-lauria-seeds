@@ -24,8 +24,7 @@
                             <div style="font-size:10pt; line-height:1.8; color:#2f2f2f;">
                                 <div style="width:100%; overflow:hidden;">
                                     <div style="float:left; width:48%; padding-right:2%;">
-                                        <div><span style="font-weight:bold;">Agricultor:</span> <span t-field="o.farmer"/></div>
-                                        <div><span style="font-weight:bold;">Temporada:</span> <span t-field="o.season"/></div>
+<div><span style="font-weight:bold;">Temporada:</span> <span t-field="o.season"/></div>
                                         <div><span style="font-weight:bold;">Fecha de inicio:</span> <span t-field="o.start_date"/></div>
                                         <div><span style="font-weight:bold;">Fecha de siembra:</span> <span t-field="o.seed_date"/></div>
                                         <div><span style="font-weight:bold;">Sustrato:</span> <span t-field="o.substratum"/></div>
@@ -102,8 +101,7 @@
                                 <div style="width:100%; overflow:hidden;">
                                     <div style="float:left; width:48%; padding-right:2%;">
                                         <div><span style="font-weight:bold;">Código de campo:</span> <span t-field="line.land_code"/></div>
-                                        <div><span style="font-weight:bold;">Agricultor:</span> <span t-field="o.farmer"/></div>
-                                    </div>
+</div>
                                     <div style="float:right; width:48%;">
                                         <div><span style="font-weight:bold;">Fecha de evaluación:</span> <span t-field="line.evaluation_date"/></div>
                                     </div>
