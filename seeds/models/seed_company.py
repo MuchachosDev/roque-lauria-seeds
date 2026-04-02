@@ -13,4 +13,4 @@ class SeedCompany(models.Model):
     )
     _sql_constraints = [
     ('name_unique', 'unique(name)', 'Este campo debe ser único.')
-]
+    ]

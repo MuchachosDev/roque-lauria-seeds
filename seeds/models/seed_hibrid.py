@@ -24,4 +24,4 @@ class SeedHibrid(models.Model):
 
     _sql_constraints = [
     ('hibrid_code_unique', 'unique(hibrid_code)', 'Este campo debe ser único.')
-]
+    ]
