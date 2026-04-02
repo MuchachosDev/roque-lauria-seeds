@@ -5,7 +5,7 @@
         <field name="name">seed.company.form</field>
         <field name="model">seed.company</field>
         <field name="arch" type="xml">
-            <form string="Empresa">
+            <form string="Laboratorio">
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -20,7 +20,7 @@
         <field name="name">seed.company.list</field>
         <field name="model">seed.company</field>
         <field name="arch" type="xml">
-            <list editable="top">
+            <list editable="top" string="Laboratorios">
                 <field name="name"/>
             </list>
         </field>
@@ -28,7 +28,7 @@
 
     <!-- Action -->
     <record id="seed_company_action" model="ir.actions.act_window">
-        <field name="name">Empresas</field>
+        <field name="name">Laboratorios</field>
         <field name="res_model">seed.company</field>
         <field name="view_mode">list,form</field>
     </record>

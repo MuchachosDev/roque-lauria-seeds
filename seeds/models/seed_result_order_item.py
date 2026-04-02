@@ -5,10 +5,10 @@ class SeedResultOrderItem(models.Model):
     _name = "seed.result.order.item"
     _description = "Result order items"
 
-    land_code = fields.Char(string="Código de campo")
-    evaluation_date = fields.Date(string="Fecha de evaluación")
+    land_code = fields.Char(string="Código de campo", required=True)
+    evaluation_date = fields.Date(string="Fecha de evaluación", required=True)
     experiment_result = fields.Html()
-    hibrid_id = fields.Many2one(string="Variedad", comodel_name="seed.hibrid")
+    hibrid_id = fields.Many2one(string="Variedad", comodel_name="seed.hibrid", required=True)
     vegetable_name = fields.Char(
         string="Hortaliza", related="hibrid_id.vegetable_id.name"
     )

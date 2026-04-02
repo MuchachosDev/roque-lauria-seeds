@@ -12,11 +12,11 @@ class SeedDepertureOrder(models.Model):
         readonly=True,
         copy=False,
     )
-    deperture_date = fields.Date(string="Fecha de envío")
-    arrival_date = fields.Date(string="Fecha de recepción")
+    deperture_date = fields.Date(string="Fecha de envío", required=True)
+    arrival_date = fields.Date(string="Fecha de recepción", required=True)
     destinatary_id = fields.Many2one(
         string="Destinatario",
-        comodel_name="seed.destinatary"
+        comodel_name="seed.destinatary", required=True
     )
     destinatary_city = fields.Char(
         string="Localidad de destino",

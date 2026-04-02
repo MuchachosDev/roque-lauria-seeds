@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 class SeedDestinatary(models.Model):
     _name = "seed.destinatary"
-    _description = "Destinatiries"
+    _description = "Destinataries"
     _rec_name = "first_name"
 
     def _get_default_country(self):
@@ -11,8 +11,8 @@ class SeedDestinatary(models.Model):
         return self.env.ref("base.ar")
 
     complete_name = fields.Char(string="Nombre completo", compute="_compute_complete_name")
-    first_name = fields.Char(string="Nombre completo")
-    last_name = fields.Char(string="Apellido")
+    first_name = fields.Char(string="Nombre", required=True)
+    last_name = fields.Char(string="Apellido", required=True)
 
     country_id = fields.Many2one(
         string="País",
@@ -22,9 +22,9 @@ class SeedDestinatary(models.Model):
     state_id = fields.Many2one(
         string="Provincia",
         comodel_name="res.country.state",
-        domain="[('country_id', '=', country_id)]",
+        domain="[('country_id', '=', country_id)]",required=True
     )
-    city = fields.Char(string="Nombre de la localidad")
+    city = fields.Char(string="Nombre de la localidad",required=True)
     location_name = fields.Char(
         string="Localidad de destino",
         compute="_compute_location_name"
