@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view -->
+    <record id="seed_result_order_item_form_view" model="ir.ui.view">
+        <field name="name">seed.result.order.item.form</field>
+        <field name="model">seed.result.order.item</field>
+        <field name="arch" type="xml">
+            <form string="Resultado del ensayo">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="hibrid_id" />
+                            <field name="vegetable_name" />
+                        </group>
+                        <group>
+                            <field name="land_code" />
+                            <field name="evaluation_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Evaluación Experimental">
+                            <field name="experiment_result" widget="html" nolabel="1" />
+                        </page>
+                        <page string="Fotos y Videos">
+                            <field name="photo" widget="many2many_binary" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
