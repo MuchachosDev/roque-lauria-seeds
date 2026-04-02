@@ -17,6 +17,7 @@
         "views/seed_deperture_order_view.xml",
         "views/seed_hibrid_view.xml",
         "views/seed_result_order_view.xml",
+        "views/seed_result_order_item_view.xml",
         "views/seed_vegetable_view.xml",
         "views/menu.xml",
         # Reports

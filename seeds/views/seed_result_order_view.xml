@@ -17,16 +17,10 @@
                         <group string="Datos generales del ensayo">
                             <field name="farmer" />
                             <field name="distributor" />
-                            <label
-                                for="lat_coord"
-                                string="Coordenadas (Lat/Lon)"
-                            />
+                            <label for="lat_coord" string="Coordenadas (Latitud/Longitud)"/>
                             <div class="o_row">
-                                <field name="lat_coord" placeholder="Latitud" />
-                                <field
-                                    name="lon_coord"
-                                    placeholder="Longitud"
-                                />
+                                <field name="lat_coord" placeholder="Latitud"/>
+                                <field name="lon_coord" placeholder="Longitud"/>
                             </div>
                             <field name="season" />
                             <field name="test_fiability" />
@@ -50,28 +44,6 @@
                                     <field name="hibrid_id" />
                                     <field name="vegetable_name" />
                                 </list>
-                                <form string="Resultado de Variedad">
-                                    <sheet>
-                                        <group>
-                                            <group>
-                                                <field name="hibrid_id" />
-                                                <field name="vegetable_name" />
-                                            </group>
-                                            <group>
-                                                <field name="land_code" />
-                                                <field name="evaluation_date" />
-                                            </group>
-                                        </group>
-                                        <notebook>
-                                            <page string="Evaluación Experimental">
-                                                <field name="experiment_result" widget="html" nolabel="1" />
-                                            </page>
-                                            <page string="Fotos y Videos">
-                                                <field name="photo" widget="many2many_binary" nolabel="1"/>
-                                            </page>
-                                        </notebook>
-                                    </sheet>
-                                </form>
                             </field>
                         </page>
                     </notebook>
