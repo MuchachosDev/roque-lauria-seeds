@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 
 class SeedHibrid(models.Model):
@@ -22,6 +23,8 @@ class SeedHibrid(models.Model):
         inverse_name="hibrid_id",
     )
 
-    _sql_constraints = [
-    ('hibrid_code_unique', 'unique(hibrid_code)', 'Este campo debe ser único.')
-    ]
+    @api.constrains('hibrid_code')
+    def _check_name_unique(self):
+        for record in self:
+            if self.search_count([('hibrid_code', '=', record.hibrid_code), ('id', '!=', record.id)]) > 0:
+                raise ValidationError('Este campo debe ser único.')

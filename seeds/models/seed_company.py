@@ -1,5 +1,5 @@
-from odoo import fields, models
-
+from odoo import fields, models,api
+from odoo.exceptions import ValidationError
 
 class SeedCompany(models.Model):
     _name = "seed.company"
@@ -11,6 +11,8 @@ class SeedCompany(models.Model):
         comodel_name="seed.arrival.order",
         inverse_name="laboratory_id"
     )
-    _sql_constraints = [
-    ('name_unique', 'unique(name)', 'Este campo debe ser único.')
-    ]
+    @api.constrains('name')
+    def _check_name_unique(self):
+        for record in self:
+            if self.search_count([('name', '=', record.name), ('id', '!=', record.id)]) > 0:
+                raise ValidationError('Este campo debe ser único.')
