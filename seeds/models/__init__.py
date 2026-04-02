@@ -2,7 +2,6 @@ from . import (
     seed_arrival_order,
     seed_company,
     seed_destinatary,
-    seed_location,
     seed_deperture_order,
     seed_deperture_order_item,
     seed_experiment_result_template,

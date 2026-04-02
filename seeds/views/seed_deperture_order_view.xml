@@ -14,22 +14,13 @@
                     </div>
                     <group>
                         <group string="Datos generales del envío">
-                            <field name="deperture_date" />
-                            <field name="arrival_date" />
-                            <field name="batch" />
+                            <field name="deperture_date"/>
+                            <field name="arrival_date"/>
+                            <field name="batch"/>
                         </group>
                         <group string="Datos de recepción">
-                            <field name="destinatary_name">
-                                <form string="Destinatario">
-                                    <field name="name"/>
-                                </form>
-                            </field>
-                            <field name="destinatary_city">
-                                <form string="Localidad">
-                                    <field name="name"/>
-                                    <field name="state_id"/>
-                                </form>
-                            </field>
+                            <field name="destinatary_id"/>
+                            <field name="destinatary_city"/>
                         </group>
                     </group>
                     <notebook>
@@ -62,7 +53,7 @@
                 <field name="order_number" />
                 <field name="deperture_date" />
                 <field name="arrival_date" />
-                <field name="destinatary_name" />
+                <field name="destinatary_id" />
             </list>
         </field>
     </record>

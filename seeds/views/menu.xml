@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- Navegation bar -->
     <menuitem
         id="seeds_menu_root"
         name="Gestión de Ensayos"
         sequence="1"
         web_icon="seeds,static/description/icon.png"/>
-    <!-- Top bar menus -->
-    <menuitem
-        id="company_menu"
-        name="Empresas"
-        action="seed_company_action"
-        parent="seeds_menu_root"
-        sequence="20"
-    />
+    <!-- Navegation bar items -->
     <menuitem
         id="general_seed_menu"
         name="Muestras"
         parent="seeds_menu_root"
-        sequence="30"
+        sequence="10"
     />
     <menuitem
         id="general_order_menu"
         name="Ordenes"
         parent="seeds_menu_root"
-        sequence="40"
+        sequence="20"
+    />
+    <menuitem
+        id="entities_menu"
+        name="Entidades"
+        parent="seeds_menu_root"
+        sequence="30"
     />
     <!-- Menu items -->
     <menuitem
@@ -60,5 +60,19 @@
         action="seed_result_order_action"
         parent="general_order_menu"
         sequence="30"
+    />
+    <menuitem
+        id="company_menu_item"
+        name="Laboratorios"
+        action="seed_company_action"
+        parent="entities_menu"
+        sequence="10"
+    />
+    <menuitem
+        id="destinatary_menu_item"
+        name="Destinatarios"
+        action="seed_destinatary_action"
+        parent="entities_menu"
+        sequence="20"
     />
 </odoo>

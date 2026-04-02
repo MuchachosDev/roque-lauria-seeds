@@ -14,13 +14,14 @@ class SeedDepertureOrder(models.Model):
     )
     deperture_date = fields.Date(string="Fecha de envío")
     arrival_date = fields.Date(string="Fecha de recepción")
-    destinatary_name = fields.Many2one(
+    destinatary_id = fields.Many2one(
         string="Destinatario",
         comodel_name="seed.destinatary"
     )
-    destinatary_city = fields.Many2one(
+    destinatary_city = fields.Char(
         string="Localidad de destino",
-        comodel_name="seed.location"
+        related="destinatary_id.location_name",
+        store=True
     )
     batch = fields.Char("Batch")
     observation = fields.Html(string="Observaciones")
