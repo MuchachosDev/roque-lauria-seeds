@@ -23,7 +23,7 @@
                             <field name="hibrid_id" />
                             <field name="hibrid_name" readonly="1" />
                             <field name="vegetable_id" readonly="1" />
-                            <field name="company_id" readonly="1" />
+                            <field name="laboratory_id" readonly="1" />
                         </group>
                     </group>
                     <group string="Datos del detalle técnico del híbrido">
@@ -75,7 +75,7 @@
             <list>
                 <field name="order_number" />
                 <field name="arrival_date" />
-                <field name="company_id" />
+                <field name="laboratory_id" />
                 <field name="hibrid_id" />
             </list>
         </field>

@@ -9,7 +9,7 @@ class SeedHibrid(models.Model):
 
     hibrid_code = fields.Char(string="Código del hibrido", tracking=True)
     name = fields.Char(string="Nombre", tracking=True)
-    company_id = fields.Many2one(string="Empresa", comodel_name="seed.company")
+    laboratory_id = fields.Many2one(string="Empresa", comodel_name="seed.company")
     vegetable_id = fields.Many2one(string="Hortaliza", comodel_name="seed.vegetable")
     arrival_order_ids = fields.One2many(
         comodel_name="seed.arrival.order", inverse_name="hibrid_id"

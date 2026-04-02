@@ -16,16 +16,15 @@ class SeedArrivalOrder(models.Model):
     invoice_number = fields.Char(string="Número de factura")
     hibrid_id = fields.Many2one(string="Híbrido", comodel_name="seed.hibrid")
     hibrid_name = fields.Char(string="Nombre del hibrido", related="hibrid_id.name")
-    company_id = fields.Many2one(
+    laboratory_id = fields.Many2one(
         string="Empresa proveedora",
         comodel_name="seed.company",
-        related="hibrid_id.company_id",
-        store=True,
+        related="hibrid_id.laboratory_id"
     )
     vegetable_id = fields.Many2one(
         string="Hortaliza",
         comodel_name="seed.vegetable",
-        related="hibrid_id.vegetable_id",
+        related="hibrid_id.vegetable_id"
     )
     amount = fields.Integer(string="Cantidad")
     observation = fields.Html()

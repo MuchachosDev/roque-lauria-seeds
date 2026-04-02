@@ -9,5 +9,5 @@ class SeedCompany(models.Model):
     arrival_order_ids = fields.One2many(
         string="Ordenes de entrada",
         comodel_name="seed.arrival.order",
-        inverse_name="company_id"
+        inverse_name="laboratory_id"
     )
