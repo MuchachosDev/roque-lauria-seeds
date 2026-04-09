@@ -31,9 +31,9 @@
         <field name="model">seed.hibrid</field>
         <field name="arch" type="xml">
             <list>
-                <field name="hibrid_code" />
-                <field name="name" />
-                <field name="vegetable_id" />
+                <field name="hibrid_code"/>
+                <field name="name"/>
+                <field name="vegetable_id"/>
             </list>
         </field>
     </record>
@@ -42,5 +42,10 @@
         <field name="name">Hibridos</field>
         <field name="res_model">seed.hibrid</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No existen híbridos cargados en el sistema. Cargue algunos.
+            </p>
+        </field>
     </record>
 </odoo>

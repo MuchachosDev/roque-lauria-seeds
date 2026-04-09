@@ -7,6 +7,11 @@ class SeedVegetable(models.Model):
     _description = "Vegetables"
 
     name = fields.Char(string="Nombre", required=True)
+    hibrid_ids = fields.One2many(
+        string="Híbridos",
+        comodel_name="seed.hibrid",
+        inverse_name="vegetable_id"
+    )
 
     @api.constrains('name')
     def _check_name_unique(self):

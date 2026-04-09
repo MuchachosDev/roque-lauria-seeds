@@ -7,9 +7,23 @@
         <field name="arch" type="xml">
             <form string="Laboratorio">
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
+                    <div class="oe_title">
+                        <label for="name" string="Nombre del laboratorio"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Híbridos desarrollados">
+                            <field name="hibrid_ids" readonly="1">
+                                <list>
+                                    <field name="hibrid_code"/>
+                                    <field name="name"/>
+                                    <field name="vegetable_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -20,7 +34,7 @@
         <field name="name">seed.company.list</field>
         <field name="model">seed.company</field>
         <field name="arch" type="xml">
-            <list editable="top" string="Laboratorios">
+            <list string="Laboratorios">
                 <field name="name"/>
             </list>
         </field>
@@ -31,5 +45,10 @@
         <field name="name">Laboratorios</field>
         <field name="res_model">seed.company</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No existen laboratorios cargados en el sistema. Cargue algunos.
+            </p>
+        </field>
     </record>
 </odoo>

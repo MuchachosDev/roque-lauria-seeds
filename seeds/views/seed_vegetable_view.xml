@@ -7,9 +7,17 @@
         <field name="arch" type="xml">
             <form string="Hortaliza">
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
+                    <div class="oe_title">
+                        <label for="name" string="Nombre del laboratorio"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Hibridos">
+                            <field name="hibrid_ids"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -20,7 +28,7 @@
         <field name="name">seed.vegetable.list</field>
         <field name="model">seed.vegetable</field>
         <field name="arch" type="xml">
-            <list editable="top">
+            <list string="Hortalizas">
                 <field name="name"/>
             </list>
         </field>
@@ -31,5 +39,10 @@
         <field name="name">Hortaliza</field>
         <field name="res_model">seed.vegetable</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No existen hortalizas cargados en el sistema. Cargue algunos.
+            </p>
+        </field>
     </record>
 </odoo>
