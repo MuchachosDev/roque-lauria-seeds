@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- Navegation bar -->
+    <!-- Navigation bar -->
     <menuitem
         id="seeds_menu_root"
         name="Gestión de Ensayos"
         sequence="1"
-        web_icon="seeds,static/description/icon.png"/>
-    <!-- Navegation bar items -->
+        web_icon="seeds,static/description/icon.png"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"/>
+
+    <!-- Navigation bar items -->
     <menuitem
         id="general_seed_menu"
         name="Muestras"
         parent="seeds_menu_root"
         sequence="10"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="general_order_menu"
         name="Ordenes"
         parent="seeds_menu_root"
         sequence="20"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="entities_menu"
         name="Entidades"
         parent="seeds_menu_root"
         sequence="30"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <!-- Menu items -->
     <menuitem
         id="vegetable_menu_item"
@@ -32,47 +40,60 @@
         action="seed_vegetable_action"
         parent="general_seed_menu"
         sequence="10"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="hibrid_menu_item"
         name="Híbridos"
         action="seed_hibrid_action"
         parent="general_seed_menu"
         sequence="20"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="arrival_order_menu_item"
         name="Ordenes de entrada"
         action="seed_arrival_order_action"
         parent="general_order_menu"
         sequence="10"
+        groups="seeds.group_seed_manager"
     />
+
     <menuitem
         id="deperture_order_menu_item"
         name="Ordenes de salida"
         action="seed_deperture_order_action"
         parent="general_order_menu"
         sequence="20"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="result_order_menu_item"
         name="Ordenes de resultado"
         action="seed_result_order_action"
         parent="general_order_menu"
         sequence="30"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
+
     <menuitem
         id="company_menu_item"
         name="Laboratorios"
         action="seed_company_action"
         parent="entities_menu"
         sequence="10"
+        groups="seeds.group_seed_manager"
     />
+
     <menuitem
         id="destinatary_menu_item"
         name="Destinatarios"
         action="seed_destinatary_action"
         parent="entities_menu"
         sequence="20"
+        groups="seeds.group_seed_manager,seeds.group_seed_engineer"
     />
 </odoo>

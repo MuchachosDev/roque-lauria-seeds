@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- Seed Manager -->
-  <record id="group_seed_manager" model="res.groups">
-    <field name="name">Seeds Manager</field>
-    <field name="comment">The user will be able to create, delete and edit al models</field>
-    <field name="user_ids" eval="[(4, ref('base.user_admin')), (4, ref('base.user_root'))]"/>
-  </record>
+    <record id="module_category_seed" model="ir.module.category">
+        <field name="name">Seed</field>
+        <field name="sequence">25</field>
+    </record>
 
-  <!-- Seed Engineer -->
-  <record id="group_seed_engineer" model="res.groups">
-    <field name="name">Engineer</field>
-    <field name="comment">The user will be able to edit some fields on the deperture order and manage result orders</field>
-  </record>
+    <!-- Seed Manager -->
+    <record id="group_seed_manager" model="res.groups">
+        <field name="name">Seeds Manager</field>
+        <field name="category_id" ref="module_category_seed"/>
+        <field name="comment">The user will be able to create, delete and edit all models</field>
+        <field name="user_ids" eval="[(4, ref('base.user_admin')), (4, ref('base.user_root'))]"/>
+    </record>
+
+    <!-- Seed Engineer -->
+    <record id="group_seed_engineer" model="res.groups">
+        <field name="name">Engineer</field>
+        <field name="category_id" ref="module_category_seed"/>
+        <field name="comment">The user will be able to edit some fields on the departure order and manage result orders</field>
+    </record>
 </odoo>
