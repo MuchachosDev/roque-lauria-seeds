@@ -12,10 +12,26 @@ class SeedArrivalOrder(models.Model):
         readonly=True,
         copy=False,
     )
-    arrival_date = fields.Date(string="Fecha de ingreso", default=fields.Date.today, required=True)
+    arrival_date = fields.Date(
+        string="Fecha de ingreso",
+        default=fields.Date.today,
+        required=True
+    )
     invoice_number = fields.Char(string="Número de factura")
-    hibrid_id = fields.Many2one(string="Híbrido", comodel_name="seed.hibrid", required=True)
-    hibrid_name = fields.Char(string="Nombre del hibrido", related="hibrid_id.name")
+    hibrid_id = fields.Many2one(
+        string="Híbrido",
+        comodel_name="seed.hibrid",
+        required=True
+    )
+    hibrid_name = fields.Char(
+        string="Nombre del hibrido",
+        related="hibrid_id.name"
+    )
+    package_type = fields.Selection(
+        string="Tipo de presentación",
+        selection=[("seed", "Semilla"), ("letter_envelope", "Sobre")],
+        default="seed",
+    )
     laboratory_id = fields.Many2one(
         string="Empresa proveedora",
         comodel_name="seed.company",

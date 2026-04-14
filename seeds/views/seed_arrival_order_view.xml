@@ -15,15 +15,16 @@
                     </div>
                     <group string="Detalle general de la orden de entrada">
                         <group string="Datos generales">
-                            <field name="arrival_date" />
-                            <field name="invoice_number" />
-                            <field name="amount" />
+                            <field name="arrival_date"/>
+                            <field name="invoice_number"/>
+                            <field name="amount"/>
+                            <field name="package_type"/>
                         </group>
                         <group string="Datos del híbrido">
                             <field name="hibrid_id" />
-                            <field name="hibrid_name" readonly="1" />
-                            <field name="vegetable_id" readonly="1" />
-                            <field name="laboratory_id" readonly="1" />
+                            <field name="hibrid_name" readonly="1"/>
+                            <field name="vegetable_id" readonly="1"/>
+                            <field name="laboratory_id" readonly="1"/>
                         </group>
                     </group>
                     <group string="Datos del detalle técnico del híbrido">

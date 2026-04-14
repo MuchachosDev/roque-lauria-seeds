@@ -39,29 +39,4 @@
             </form>
         </field>
     </record>
-
-    <!-- List view -->
-    <record id="seed_destinatary_list_view" model="ir.ui.view">
-        <field name="name">seed.destinatary.list</field>
-        <field name="model">seed.destinatary</field>
-        <field name="arch" type="xml">
-            <list string="Destinatarios">
-                <field name="complete_name"/>
-                <field name="city"/>
-                <field name="state_id"/>
-            </list>
-        </field>
-    </record>
-
-    <!-- Action -->
-    <record id="seed_destinatary_action" model="ir.actions.act_window">
-        <field name="name">Destinatarios</field>
-        <field name="res_model">seed.destinatary</field>
-        <field name="view_mode">list,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No existen destinatarios cargados en el sistema. Cargue algunos.
-            </p>
-        </field>
-    </record>
 </odoo>

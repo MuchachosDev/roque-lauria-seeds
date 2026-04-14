@@ -5,7 +5,7 @@
         <field name="name">seed.company.form</field>
         <field name="model">seed.company</field>
         <field name="arch" type="xml">
-            <form string="Laboratorio">
+            <form string="Empresa">
                 <sheet>
                     <div class="oe_title">
                         <label for="name" string="Nombre del laboratorio"/>
@@ -34,7 +34,7 @@
         <field name="name">seed.company.list</field>
         <field name="model">seed.company</field>
         <field name="arch" type="xml">
-            <list string="Laboratorios">
+            <list string="Empresas">
                 <field name="name"/>
             </list>
         </field>

@@ -18,7 +18,11 @@ class SeedResultOrder(models.Model):
     replant_date = fields.Date(string="Fecha de transplante")
     test_fiability = fields.Char(string="Confiabilidad del ensayo")
     season = fields.Char(string="Temporada")
-    farmer = fields.Char(string="Nombre del agricultor")
+    farmer = fields.Many2one(
+        string="Agricultor",
+        comodel_name="seed.destinatary",
+        required=True
+    )
     distributor = fields.Char(string="Distribuidor")
     lines_amount = fields.Integer(string="Cantidad de líneas plantadas")
     substratum = fields.Char(string="Sustrato")

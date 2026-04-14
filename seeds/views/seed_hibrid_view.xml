@@ -21,7 +21,6 @@
                         <field name="name" />
                     </group>
                 </sheet>
-                <chatter class="o_chatter_no_activity"/>
             </form>
         </field>
     </record>

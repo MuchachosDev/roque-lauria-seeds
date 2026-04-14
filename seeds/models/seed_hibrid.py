@@ -5,17 +5,16 @@ from odoo.exceptions import ValidationError
 class SeedHibrid(models.Model):
     _name = "seed.hibrid"
     _description = "Hibrid Seeds"
-    _inherit = ["mail.thread"]
     _rec_name = "hibrid_code"
 
     hibrid_code = fields.Char(
-        string="Código del hibrido",
+        string="Código",
         tracking=True,
         required=True
     )
     name = fields.Char(string="Nombre", tracking=True)
     laboratory_id = fields.Many2one(
-        string="Laboratorio",
+        string="Empresa",
         comodel_name="seed.company",
         required=True
     )

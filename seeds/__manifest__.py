@@ -5,7 +5,7 @@
     "application": True,
     "version": "19.0.1.0.0",
     "summary": "A small and simple module to manage and track seed tests",
-    "depends": ["base", "mail"],
+    "depends": ["base"],
     "data": [
         # Security
         "security/security.xml",
@@ -27,5 +27,5 @@
         "data/sequence.xml",
         "data/vegetable.xml",
         "data/experimental_result_template.xml",
-    ],
+    ]
 }
