@@ -1,174 +1,2511 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_seed_result_order_template">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
+    <record id="batavia_lettuce_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Lechuga Batavia</field>
+        <field name="vegetable_id" ref="seeds.vegetable_batavia_lettuce"/>
+        <field name="template" type="html">
 
-                    <!-- =========================================================
-                         PÁGINA 1+: DATOS GENERALES + RESUMEN
-                    ========================================================== -->
-                    <div class="page">
-
-                        <h2 class="mt-2 mb-4"
-                            style="border-bottom: 2px solid #4a4a4a; padding-bottom: 6px; color:#2f2f2f;">
-                            Orden de Resultados: <span t-field="o.order_number"/>
-                        </h2>
-
-                        <!-- Datos generales SIN tabla -->
-                        <div style="margin-bottom:24px;">
-                            <div style="background-color:#4a4a4a; color:#ffffff; padding:6px 10px; font-size:11pt; font-weight:bold; margin-bottom:10px;">
-                                Información General del Ensayo
-                            </div>
-
-                            <div style="font-size:10pt; line-height:1.8; color:#2f2f2f;">
-                                <div style="width:100%; overflow:hidden;">
-                                    <div style="float:left; width:48%; padding-right:2%;">
-<div><span style="font-weight:bold;">Temporada:</span> <span t-field="o.season"/></div>
-                                        <div><span style="font-weight:bold;">Fecha de inicio:</span> <span t-field="o.start_date"/></div>
-                                        <div><span style="font-weight:bold;">Fecha de siembra:</span> <span t-field="o.seed_date"/></div>
-                                        <div><span style="font-weight:bold;">Sustrato:</span> <span t-field="o.substratum"/></div>
-                                        <div><span style="font-weight:bold;">Cant. líneas plantadas:</span> <span t-field="o.lines_amount"/></div>
-                                        <div><span style="font-weight:bold;">Latitud:</span> <span t-field="o.lat_coord"/></div>
-                                    </div>
-
-                                    <div style="float:right; width:48%;">
-                                        <div><span style="font-weight:bold;">Distribuidor:</span> <span t-field="o.distributor"/></div>
-                                        <div><span style="font-weight:bold;">Confiabilidad del ensayo:</span> <span t-field="o.test_fiability"/></div>
-                                        <div><span style="font-weight:bold;">Fecha de finalización:</span> <span t-field="o.end_date"/></div>
-                                        <div><span style="font-weight:bold;">Fecha de transplante:</span> <span t-field="o.replant_date"/></div>
-                                        <div><span style="font-weight:bold;">Método de cosecha:</span> <span t-field="o.harvest_method"/></div>
-                                        <div><span style="font-weight:bold;">Longitud:</span> <span t-field="o.lon_coord"/></div>
-                                    </div>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
-                        </div>
-
-                        <!-- Resumen -->
-                        <div style="margin-top:20px;">
-                            <div style="background-color:#5b5b5b; color:#ffffff; padding:6px 10px; font-size:10.5pt; font-weight:bold; margin-bottom:0;">
-                                Híbridos analizados
-                            </div>
-
-                            <table style="width:100%; border-collapse:collapse; font-size:10pt; color:#2f2f2f;">
-                                <thead>
-                                    <tr style="background-color:#707070; color:#ffffff;">
-                                        <th style="padding:6px 8px; width:5%; border:1px solid #9a9a9a; text-align:center;">#</th>
-                                        <th style="padding:6px 8px; width:30%; border:1px solid #9a9a9a;">Hortaliza</th>
-                                        <th style="padding:6px 8px; width:30%; border:1px solid #9a9a9a;">Híbrido / Variedad</th>
-                                        <th style="padding:6px 8px; width:20%; border:1px solid #9a9a9a;">Código de campo</th>
-                                        <th style="padding:6px 8px; width:15%; border:1px solid #9a9a9a;">Fecha de eval.</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <t t-foreach="o.item_ids" t-as="line">
-                                        <tr t-attf-style="background-color: {{ '#ffffff' if line_index % 2 == 0 else '#efefef' }};">
-                                            <td style="padding:5px 8px; border:1px solid #bdbdbd; text-align:center;">
-                                                <t t-esc="line_index + 1"/>
-                                            </td>
-                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
-                                                <span t-field="line.vegetable_name"/>
-                                            </td>
-                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
-                                                <span t-field="line.hibrid_id"/>
-                                            </td>
-                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
-                                                <span t-field="line.land_code"/>
-                                            </td>
-                                            <td style="padding:5px 8px; border:1px solid #bdbdbd;">
-                                                <span t-field="line.evaluation_date"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- =========================================================
-                         DETALLE: CADA HÍBRIDO EN PÁGINA NUEVA
-                    ========================================================== -->
-                    <t t-foreach="o.item_ids" t-as="line">
-                        <div class="page" style="page-break-before:always;">
-
-                            <div style="background-color:#4a4a4a; color:#ffffff; padding:7px 10px; font-size:12pt; font-weight:bold; margin-bottom:10px;">
-                                <span t-field="line.vegetable_name"/> — <span t-field="line.hibrid_id.name"/> — <span t-field="line.hibrid_id.hibrid_code"/>
-                            </div>
-
-                            <!-- Datos del híbrido, sin número de orden -->
-                            <div style="margin-bottom:12px; font-size:10pt; color:#2f2f2f; line-height:1.7;">
-                                <div style="width:100%; overflow:hidden;">
-                                    <div style="float:left; width:48%; padding-right:2%;">
-                                        <div><span style="font-weight:bold;">Código de campo:</span> <span t-field="line.land_code"/></div>
-</div>
-                                    <div style="float:right; width:48%;">
-                                        <div><span style="font-weight:bold;">Fecha de evaluación:</span> <span t-field="line.evaluation_date"/></div>
-                                    </div>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
-
-                            <!-- Contenido del experimento -->
-                            <div style="font-size:9.5pt;">
-                                <t t-out="line.experiment_result"/>
-                            </div>
-
-                            <!-- Evidencia fotográfica -->
-                            <t t-if="line.photo">
-                                <div style="margin-top:16px; page-break-inside:avoid;">
-                                    <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
-                                        <tr style="background-color:#444444; color:#ffffff;">
-                                            <td style="padding:5px 10px; font-weight:bold;">
-                                                Evidencia fotográfica
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <t t-set="photos" t-value="line.photo.filtered(lambda a: a.mimetype and a.mimetype.startswith('image/'))"/>
-                                <t t-foreach="range(0, len(photos), 3)" t-as="chunk_start">
-                                    <div style="page-break-inside:avoid; margin-bottom:8px;">
-                                        <table style="width:100%; border-collapse:collapse;">
-                                            <tr>
-                                                <t t-foreach="photos[chunk_start:chunk_start+3]" t-as="img">
-                                                    <td style="width:33%; padding:4px; text-align:center; vertical-align:top;">
-                                                        <img t-att-src="'/web/image/%s' % img.id"
-                                                             style="max-width:100%; max-height:180px; border:1px solid #bbb; padding:3px;"/>
-                                                        <div style="font-size:8pt; color:#666; margin-top:3px;">
-                                                            <t t-esc="img.name"/>
-                                                        </div>
-                                                    </td>
-                                                </t>
-                                                <t t-if="len(photos[chunk_start:chunk_start+3]) == 1">
-                                                    <td style="width:33%;"></td>
-                                                    <td style="width:33%;"></td>
-                                                </t>
-                                                <t t-if="len(photos[chunk_start:chunk_start+3]) == 2">
-                                                    <td style="width:33%;"></td>
-                                                </t>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </t>
-                            </t>
-
-                        </div>
-                    </t>
-
-                </t>
-            </t>
-        </t>
-    </template>
-
-    <record id="action_report_seed_result_order" model="ir.actions.report">
-        <field name="name">Orden/es de Resultado</field>
-        <field name="model">seed.result.order</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">seeds.report_seed_result_order_template</field>
-        <field name="report_file">seeds.report_seed_result_order_template</field>
-        <field name="binding_model_id" ref="model_seed_result_order"/>
-        <field name="binding_type">report</field>
-        <field name="print_report_name">'Resultados_%s' % (object.order_number)</field>
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Intensidad de color de la hoja</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Claro; 3 - Medio claro; 5 - Medio; 7 - Oscuro; 9 - Muy oscuro</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Brillo de hojas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy opaco; 3 - Opaco; 5 - Normal; 7 - Brilloso; 9 - Muy brilloso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pequeña; 3 - Pequeña; 5 - Mediana; 7 - Grande; 9 - Muy grande</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy tardía; 3 - Tardía; 5 - Media temprana; 7 - Temprana; 9 - Muy temprana</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Densidad de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy suelta; 3 - Suelta; 5 - Media compacta; 7 - Compacta; 9 - Muy compacta</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cierre superior</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy cerrado; 3 - Cerrado; 5 - Un poco abierta; 7 - Abierto; 9 - Muy abierto</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Daño por helada</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Poco presente; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Top Presentation (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tip Burn (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Poco presente; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hojas amarillas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchas; 3 - Varias; 5 - Moderado; 7 - Algunas; 9 - Ninguna</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Pudrición basal</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchas; 3 - Varias; 5 - Moderado; 7 - Algunas; 9 - Ninguna</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presentación de la base</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cierre de la base</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy abierto; 3 - Abierto; 5 - Moderado; 7 - Cerrado; 9 - Muy cerrado</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Estructura de las venas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy acostillada; 3 - Acostillada; 5 - Moderada; 7 - Aplanada; 9 - Muy aplanada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tip burn interno (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 5 cabezas afectadas; 3 - 4 cabezas afectadas; 5 - 3 cabezas afectadas; 7 - 2 cabezas afectadas; 9 - 1 cabeza afectada</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
     </record>
+
+    <record id="eggplant_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Berenjena</field>
+        <field name="vegetable_id" ref="seeds.vegetable_eggplant"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Tardío a temprano</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Débil a fuerte</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Carga de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Bajo a alto</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cantidad de frutos cosechados 1° calidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Largo de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Ancho de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño del cáliz</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Pequeño a grande</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Claro a oscuro</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza del fruto maduro</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Blando a duro</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fruto brillante</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Malo a bueno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hábito de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Denso a abierto</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos fuertes</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos débiles</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="broccoli_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Brócoli</field>
+        <field name="vegetable_id" ref="seeds.vegetable_broccoli"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Días de siembra hasta fin de cosecha</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pobre; 3 - Pobre; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Suavidad de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Opresión o estrechez de floretes</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de granos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de granos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Granos marrones</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Defectos en granos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Ojo de gato (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de ramificación</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Facilidad de cosecha</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de cosecha</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tallo hueco</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Mildiu (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Alternaria (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="onion_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Cebolla</field>
+        <field name="vegetable_id" ref="seeds.vegetable_onion"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Densidad estimada de plantas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 0 plantas; 3 - Insuficientes; 5 - Comerciable; 7 - Densidad ideal; 9 - Muy alta densidad</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fecha de 50% echado</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Fecha</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de floración</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad del follaje</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mala; 3 - Mala; 5 - Medio; 7 - Sana; 9 - Muy sana</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pálida; 3 - Pálida; 5 - Media; 7 - Oscura; 9 - Muy oscura</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de formato</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Serosidad de hojas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Verde claro; 3 - Medio verde; 5 - Verde oscuro; 7 - Verde azulado</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de centros únicos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de bulbos dobles apretados</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de bulbos dobles distanciados</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Formato que predomina</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Huso; 2 - Globo alta; 3 - Lágrima; 4 - Grano; 5 - Redonda; 6 - Plana grano; 7 - Granex; 8 - Plana redonda; 9 - Aplanada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de tamaño</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grosor del cuello</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy delgado; 3 - Delgado; 5 - Comerciable; 7 - Grueso; 9 - Muy grueso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Susceptibilidad a raíz rosada (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 50-200%; 3 - 25-50%; 5 - 5-25%; 7 - 1-5%; 9 - 0% inmune</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de catáfilas o piel (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Daño por Fusarium (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 50-200%; 3 - 25-50%; 5 - 5-25%; 7 - 1-5%; 9 - 0% inmune</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="cauliflower_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Coliflor</field>
+        <field name="vegetable_id" ref="seeds.vegetable_cauliflower"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de días entre siembra y cosecha</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hábito de la hoja</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy curva; 3 - Curva; 5 - Semierecta; 7 - Erecta; 9 - Muy erecta</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de la hoja</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Algunas hojas amarillas; 7 - Hojas limpias; 9 - Hojas muy limpias</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de la planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy abierta; 3 - Abierta; 5 - Ligeramente abierta; 7 - Semi-cerrada; 9 - Muy cerrada</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Crema; 3 - Blanco puro; 5 - Amarillo; 7 - Marfil; 9 - Blanco</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntaje de color de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pobre; 3 - Pobre; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presencia de hojas pequeñas alrededor de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Floración de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tallo hueco</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cabeza rosada</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Formato de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Aplanado; 3 - Semiaplanada; 5 - Semiovalado; 7 - Ovalado; 9 - Muy ovalado</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de cabezas de 12-14 cm</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad en unidades</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de cabezas de 15 cm o más</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad en unidades</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Pudrición de raíz / hernia de la col (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Susceptibilidad a xanthomonas (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntuación total</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">2 - Muy mal; 4 - No comerciable; 6 - Comerciable; 8 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="iceberg_lettuce_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Lettuce Iceberg</field>
+        <field name="vegetable_id" ref="seeds.vegetable_iceberg_lettuce"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Very small; 3 - Small; 5 - Medium; 7 - Grande; 9 - Muy grande</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Cónica; 3 - Un poco redondeada; 5 - Achatada redondeada; 7 - Redondeada; 9 - Muy redondeada</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de cabezas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro promedio de cabezas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de la cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de llenado de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 60%; 3 - 70%; 5 - 80%; 7 - 85%; 9 - 90%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cabezas con el tronco en el centro</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Ninguna; 3 - Algunas; 5 - Mitad; 7 - Mayoría; 9 - Todas</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hojas cobertoras</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy random; 3 - Random; 5 - Medium; 7 - Varias hojas; 9 - Muchas hojas</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Quemadura de punta / tipburn (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 5 plantas afectadas; 3 - 4 plantas afectadas; 5 - 3 plantas afectadas; 7 - 2 plantas afectadas; 9 - 1 planta afectada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="corn_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Maíz</field>
+        <field name="vegetable_id" ref="seeds.vegetable_corn"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Planta
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de inserción de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de espigas por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad foliar</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Acame</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Espiga
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Espigas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Largo de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">g</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Filas de granos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Granos por fila</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura de chala</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de grano</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Llenado de punta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Defectos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Producción
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Espigas por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de espiga</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">g</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg/planta</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento estimado</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">t/ha</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad comercial</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 10</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Evaluación final</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </field>
+    </record>
+
+    <record id="papaya_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Papaya</field>
+        <field name="vegetable_id" ref="seeds.vegetable_papaya"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Planta
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro de tallo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">mm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de primer fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de lote</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Arquitectura de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Carga de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Fruto
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Frutos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Largo de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de pulpa</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cavidad interna</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Brix (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Defectos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Resumen Productivo
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Promedio de frutos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg/planta</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento estimado</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">t/ha</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad comercial</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 10</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Evaluación final</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </field>
+    </record>
+
+    <record id="cabbage_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Repollo</field>
+        <field name="vegetable_id" ref="seeds.vegetable_cabbage"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Planta
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de lote</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad de hoja</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presencia de plagas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación Cabeza
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cabezas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Diámetro de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Altura de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Compacidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de corazón interno</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 5</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Defectos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Producción
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Plantas evaluadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio de cabeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg/planta</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento estimado</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">t/ha</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad comercial</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 a 10</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Evaluación final</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </field>
+    </record>
+
+    <record id="melon_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Melón</field>
+        <field name="vegetable_id" ref="seeds.vegetable_melon"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de plantas cosechadas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos comercializables por variedad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos no comercializables por variedad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de fruto en cosecha</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Intensidad de color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Amarillamiento en piel de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Blossom end cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cicatriz del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de net en el fruto (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cracking de net (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de sutura</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color interno</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Intensidad de color interno</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rompimiento interno del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sabor</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grados Brix fruta 1 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grados Brix fruta 2 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grados Brix fruta 3 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grados Brix fruta 4 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Grados Brix fruta 5 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza fruto 1</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza fruto 2</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza fruto 3</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza fruto 4</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza fruto 5</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto 1</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto 2</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto 3</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto 4</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto 5</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Average weight</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Frutos de descarte por parcela</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="cucumber_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Pepino Fruta</field>
+        <field name="vegetable_id" ref="seeds.vegetable_cucumber"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Intensidad de color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy claro; 3 - Claro; 5 - Medio; 7 - Oscuro; 9 - Muy oscuro</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Botella; 3 - Curvo; 5 - Con cuello</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Base del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy puntiaguda; 3 - Puntiaguda; 5 - Un poco puntiaguda; 7 - Un poco redondeada; 9 - Redondeada</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de hombros</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy delgado; 3 - Delgado; 5 - Mediano; 7 - Grueso; 9 - Muy grueso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos pequeños</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad de unidades</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos seleccionados</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad de unidades</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mal; 3 - Mal; 5 - Medio; 7 - Bien; 9 - Muy bien</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bien; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presencia de espinas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchas; 5 - Algunas; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Frutos sin semilla / huecos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Grande; 5 - Mediana; 9 - Pequeña</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Amargor del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Amargo; 9 - No amargo</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Nota final</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">2 - Muy malo; 4 - Comercialmente no aceptable; 6 - Comercialmente aceptable; 8 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="pepper_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Pimiento</field>
+        <field name="vegetable_id" ref="seeds.vegetable_pepper"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy tardía; 3 - Tardía; 5 - Medio; 7 - Temprana; 9 - Muy temprana</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura foliar</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy corto; 3 - Corto; 5 - Medio; 7 - Largo; 9 - Muy largo</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mal; 3 - Mal; 5 - Moderada; 7 - Buena; 9 - Muy buena</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Suavidad de la piel</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Áspera; 3 - Muy áspera; 5 - Moderada; 7 - Suave; 9 - Muy suave</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos con 2 lóculos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">#</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos con 3 lóculos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">#</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos con 4 lóculos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">#</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos con 5 lóculos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">#</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Medida de ancho del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presencia de STIP (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Sí, No</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Porcentaje de frutos con antocianinas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Macrocracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Star cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Micro cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">BER / base del fruto negra (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Incidencia del BER durante cultivo (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Pitting (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Blossom end depth (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Brillo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Pudrición interna</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Intensidad de color externo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tiempo de viraje de color</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Silvering (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Depresión de los hombros</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Productividad</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Visión general de la variedad</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de plantas por variedad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de frutos comercializables</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso total de fruta cosechada</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos cosechados</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos Jumbo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos XL</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos L</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos M</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos pequeños</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos cosechados 1era</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos cosechados 2da</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos descarte</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Botrytis (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="watermelon_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Sandía</field>
+        <field name="vegetable_id" ref="seeds.vegetable_watermelon"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número Brix fruta H1 (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza en fruto maduro</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Suave a duro</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de la pulpa</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Claro a oscuro</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fruto hueco</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Extremo a nada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Carga de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Baja a alta</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Forma de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Ancho de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Largo de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura de hojas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Pobre a excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Malo a bueno</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Malo a bueno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Débil a fuerte</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos fuertes</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos débiles</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="determinated_tomato_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Tomate determinado</field>
+        <field name="vegetable_id" ref="seeds.vegetable_determinated_tomate"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pequeño; 3 - Mixto; 5 - Moderado; 7 - Bueno; 9 - Muy bueno</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntaje de color maduro</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Microcracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Demasiado; 3 - Moderado; 5 - Un poco; 7 - Presente; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cicatriz de tallo corcho</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy grande; 3 - Grande; 5 - Significante; 7 - Pequeño; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tomate con punta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy alargada; 3 - Alargada; 5 - Medio; 7 - Corto; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cierre pistilar (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Balance</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy pobre; 3 - Pobre; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tipo de cultivo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy corta; 3 - Corta; 5 - Media; 7 - Larga; 9 - Muy larga</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mal; 3 - Mal; 5 - Medio; 7 - Bueno; 9 - Muy buena</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura foliar</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy abierta; 3 - Abierta; 5 - Semiabierta; 7 - Semicerrada; 9 - Cerrada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Brillo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy opaco; 3 - Opaco; 5 - Moderado; 7 - Brilloso; 9 - Muy brilloso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchos; 3 - Varios; 5 - Moderado; 7 - Pocos; 9 - Ninguno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Firmeza</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Presencia de BER / base negra (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Sí, No</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Blotchy en maduración (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Formato de fruto Saladette</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Redondeado; 3 - Corto aperado; 5 - Aperado; 7 - Cilíndrico; 9 - San Marzano</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de frutos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad en unidades</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="indeterminated_tomato_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Tomate indeterminado</field>
+        <field name="vegetable_id" ref="seeds.vegetable_indeterminated_tomato"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tipo de cultivo</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy corto; 3 - Corto; 5 - Medio; 7 - Largo; 9 - Muy largo</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy débil; 3 - Débil; 5 - Moderado; 7 - Vigoroso; 9 - Muy vigoroso</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Balance entre carga y vigor</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy tardía; 3 - Tardía; 5 - Medio; 7 - Temprana; 9 - Muy tardía</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hot Top Setting (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mal; 3 - Mal; 5 - Medio; 7 - Bien; 9 - Muy bien</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Longitud de la planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy corto; 3 - Corto; 5 - Medio; 7 - Largo; 9 - Muy largo</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de racimos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad en unidades</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Carga de frutos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento en calor</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tolerancia de hormonas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Sí, No</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura foliar</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy abierta; 3 - Abierta; 5 - Un poco abierta; 7 - Semi-cerrada; 9 - Cerrada</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muy mal; 3 - Mal; 5 - Medio; 7 - Bien; 9 - Muy bien</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Sanidad de la planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">%</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Bacteria / pseudomonas / xanthomonas (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - 50-100% afectadas; 3 - 15-50% afectadas; 5 - 5-15% afectadas; 7 - 1-5% afectadas; 9 - 0%</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Hombros verdes (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchos; 3 - Varios; 5 - Moderado; 7 - Algunos; 9 - Ninguno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Peso promedio</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">cm</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Formato de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Pobre; 3 - Insuficiente; 5 - Moderado; 7 - Bueno; 9 - Excelente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Blotchy o manchado (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fruto en punta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Severo; 3 - Fuerte; 5 - Moderado; 7 - Leve; 9 - Ausente</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">1 - Muchos; 3 - Varios; 5 - Moderado; 7 - Algunos; 9 - Ninguno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Micro cracking (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cicatriz de tallo corcho</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cierre pistilar (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Número de lóculos</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Fortalezas / ventajas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Debilidades / desventajas</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Comentarios generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <record id="pumpkin_experiment_result_template" model="seed.experiment.result.template">
+        <field name="name">Zapallo</field>
+        <field name="vegetable_id" ref="seeds.vegetable_pumpkin"/>
+        <field name="template" type="html">
+
+            <table style="width:100%; border-collapse:collapse; page-break-inside:avoid; font-size:9pt; margin-bottom:8px; color:#2f2f2f;">
+                <colgroup>
+                    <col style="width:38%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:52%;"/>
+                </colgroup>
+                <thead>
+                    <tr style="background-color:#4a4a4a; color:#ffffff;">
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Característica</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f; text-align:center;">Valor</th>
+                        <th style="padding:5px 8px; border:1px solid #8f8f8f;">Parámetro / referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color:#d7d7d7;">
+                        <td colspan="3" style="padding:4px 8px; font-weight:bold; border:1px solid #b8b8b8;">
+                            Evaluación
+                        </td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de fruto cosechado</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Claro a oscuro</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cantidad de frutos cosechados</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Precocidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Tardío a temprano</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Calidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Malo a bueno</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Uniformidad de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Malo a bueno</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento de frutos comerciales</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Cantidad</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Rendimiento de frutos por planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">kg</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Tamaño de cavidad</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Pequeño a grande</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cicatriz de pudrición apical (término técnico)</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Grande a pequeño</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Color de pulpa del fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Claro a oscuro</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Acostillamiento de fruto</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Extremo a nada</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Cobertura de hojas</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Pobre a excelente</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Vigor de planta</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;">Débil a fuerte</td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Valoración total</td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                        <td style="padding:4px 8px; border:1px solid #c2c2c2;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos fuertes</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#f1f1f1;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Puntos débiles</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                        <td style="padding:4px 8px; font-weight:bold; border:1px solid #c2c2c2;">Observaciones generales</td>
+                        <td colspan="2" style="padding:4px 8px; border:1px solid #c2c2c2; min-height:40px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
 </odoo>
