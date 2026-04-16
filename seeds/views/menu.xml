@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
+    <record id="seeds_home_action" model="ir.actions.client">
+        <field name="name">Gestion de Ensayos</field>
+        <field name="tag">seeds.home</field>
+    </record>
+
     <!-- Navigation bar -->
     <menuitem
         id="seeds_menu_root"
         name="Gestión de Ensayos"
         sequence="1"
+        action="seeds_home_action"
         web_icon="seeds,static/description/icon.png"
         groups="seeds.group_seed_manager,seeds.group_seed_engineer"/>
 

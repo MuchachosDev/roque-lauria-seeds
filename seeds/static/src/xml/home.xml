@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="seeds.HomeScreen">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <img src="/static/src/img/logo.png"
+                 alt="Logo Roque Lauria"
+                 style="max-width: 320px; max-height: 220px; object-fit: contain;"/>
+        </div>
+    </t>
+</templates>

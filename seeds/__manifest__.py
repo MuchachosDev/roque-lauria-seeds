@@ -27,5 +27,11 @@
         "data/sequence.xml",
         "data/vegetable.xml",
         "data/experimental_result_template.xml",
-    ]
+    ],
+    "assets": {
+        "web.assets_backend": [
+            "/static/src/js/home.js",
+            "/static/src/xml/home.xml",
+        ],
+    },
 }
