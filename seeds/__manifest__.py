@@ -30,8 +30,8 @@
     ],
     "assets": {
         "web.assets_backend": [
-            "seeds/static/src/js/home.js",
-            "seeds/static/src/xml/home.xml",
+            "static/src/js/home.js",
+            "static/src/xml/home.xml",
         ],
     },
 }
