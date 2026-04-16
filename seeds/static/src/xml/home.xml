@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <t t-name="seeds.HomeScreen">
         <div class="d-flex justify-content-center align-items-center h-100">
-            <img src="/static/src/png/logo.png"
+            <img src="static/src/png/logo.png"
                  alt="Logo Roque Lauria"
                  style="max-width: 320px; max-height: 220px; object-fit: contain;"/>
         </div>
