@@ -23,7 +23,7 @@
                                 <div style="width:100%; overflow:hidden;">
 
                                     <div style="float:left; width:48%; padding-right:2%;">
-                                        <div t-if="o.destinatary_name">
+                                        <div t-if="o.destinatary_id.complete_name">
                                             <span style="font-weight:bold;">Destinatario:</span>
                                             <span t-field="o.destinatary_id.complete_name"/>
                                         </div>
