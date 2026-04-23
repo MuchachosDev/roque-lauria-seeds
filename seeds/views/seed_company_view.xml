@@ -8,7 +8,7 @@
             <form string="Empresa">
                 <sheet>
                     <div class="oe_title">
-                        <label for="name" string="Nombre del laboratorio"/>
+                        <label for="name" string="Nombre de la empresa"/>
                         <h1>
                             <field name="name"/>
                         </h1>
@@ -42,12 +42,12 @@
 
     <!-- Action -->
     <record id="seed_company_action" model="ir.actions.act_window">
-        <field name="name">Laboratorios</field>
+        <field name="name">Empresas</field>
         <field name="res_model">seed.company</field>
         <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No existen laboratorios cargados en el sistema. Cargue algunos.
+                No existen empresas cargados en el sistema. Cargue algunos.
             </p>
         </field>
     </record>

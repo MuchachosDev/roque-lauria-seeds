@@ -8,7 +8,7 @@
             <form string="Hortaliza">
                 <sheet>
                     <div class="oe_title">
-                        <label for="name" string="Nombre del laboratorio"/>
+                        <label for="name" string="Nombre de la empresa"/>
                         <h1>
                             <field name="name"/>
                         </h1>
