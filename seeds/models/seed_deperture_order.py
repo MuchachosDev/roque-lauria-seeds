@@ -18,7 +18,6 @@ class SeedDepertureOrder(models.Model):
     )
     arrival_date = fields.Date(
         string="Fecha de recepción",
-        required=True
     )
     destinatary_id = fields.Many2one(
         string="Agricultor",
