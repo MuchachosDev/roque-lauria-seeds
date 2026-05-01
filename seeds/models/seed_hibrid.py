@@ -35,6 +35,11 @@ class SeedHibrid(models.Model):
         comodel_name="seed.result.order.item",
         inverse_name="hibrid_id",
     )
+    stock_id = fields.One2many(
+        string="Stock",
+        comodel_name="seed.stock",
+        inverse_name="hibrid_id"
+    )
 
     @api.constrains('hibrid_code')
     def _check_name_unique(self):

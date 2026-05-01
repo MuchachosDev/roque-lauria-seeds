@@ -40,12 +40,10 @@ class SeedDepertureOrder(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if (
-                vals.get("order_number", "Nueva orden de salida")
-                == "Nueva orden de salida"
-            ):
+            if vals.get("order_number", "Nueva orden de salida") == "Nueva orden de salida":
                 vals["order_number"] = (
                     self.env["ir.sequence"].next_by_code("seed.deperture.order")
                     or "Nueva orden de salida"
                 )
+
         return super().create(vals_list)
