@@ -41,6 +41,14 @@
         groups="seeds.group_seed_manager"
     />
 
+    <menuitem
+        id="stock_menu"
+        name="Inventario"
+        action="seed_stock_action"
+        parent="seeds_menu_root"
+        sequence="40"
+        groups="seeds.group_seed_manager"
+    />
     <!-- Menu items -->
     <menuitem
         id="vegetable_menu_item"

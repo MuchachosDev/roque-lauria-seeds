@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 class SeedStock(models.Model):
     _name = "seed.stock"
@@ -22,3 +23,9 @@ class SeedStock(models.Model):
         default="seed",
     )
     amount = fields.Integer(string="Cantidad")
+
+    @api.constrains("amount")
+    def _check_positive_amount(self):
+        for rec in self:
+            if rec.amount < 0:
+                raise ValidationError("El stock no puede ser negativo")

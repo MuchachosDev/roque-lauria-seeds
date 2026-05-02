@@ -4,7 +4,7 @@ from odoo import api, fields, models
 class SeedDestinatary(models.Model):
     _name = "seed.destinatary"
     _description = "Destinataries"
-    _rec_name = "first_name"
+    _rec_name = "complete_name"
 
     def _get_default_country(self):
         # return self.env.user.partner_id.country_id

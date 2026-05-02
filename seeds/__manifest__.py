@@ -19,6 +19,7 @@
         "views/seed_result_order_view.xml",
         "views/seed_result_order_item_view.xml",
         "views/seed_vegetable_view.xml",
+        "views/seed_stock_view.xml",
         "views/menu.xml",
         # Reports
         "report/report_seed_deperture_order.xml",

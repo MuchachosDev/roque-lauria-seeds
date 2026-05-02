@@ -31,7 +31,7 @@
                             <field name="item_ids">
                                 <list editable="top">
                                     <field name="hibrid_id" />
-                                    <field name="hibrid_code" />
+                                    <field name="hibrid_name" />
                                     <field name="vegetable" />
                                     <field name="amount" />
                                     <field name="package_type" />

@@ -21,7 +21,7 @@
                             <field name="package_type"/>
                         </group>
                         <group string="Datos del híbrido">
-                            <field name="hibrid_id" />
+                            <field name="hibrid_id"/>
                             <field name="hibrid_name" readonly="1"/>
                             <field name="vegetable_id" readonly="1"/>
                             <field name="laboratory_id" readonly="1"/>

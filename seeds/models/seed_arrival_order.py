@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SeedArrivalOrder(models.Model):
@@ -70,25 +71,6 @@ class SeedArrivalOrder(models.Model):
     sanity = fields.Char(string="Sanidad")
     resistance = fields.Char(string="Resistencia y/o tolerancia")
 
-    def _update_stock(self, hibrid_id, package_type, quantity):
-        if not hibrid_id or not package_type:
-            return
-
-        stock = self.env['seed.stock'].search([
-            ('hibrid_id', '=', hibrid_id),
-            ('package_type', '=', package_type)
-        ], limit=1)
-
-        if stock:
-            stock.amount += quantity
-
-        elif quantity > 0:
-            self.env['seed.stock'].create({
-                'hibrid_id': hibrid_id,
-                'package_type': package_type,
-                'amount': quantity
-            })
-
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -98,49 +80,67 @@ class SeedArrivalOrder(models.Model):
                     or "Nueva orden de entrada"
                 )
 
-            hibrid_id = vals.get('hibrid_id')
-            package_type = vals.get('package_type')
-            amount = vals.get('amount', 0)
+            hibrid_id = vals.get("hibrid_id")
+            package_type = vals.get("package_type")
+            amount = vals.get("amount", 0)
 
             if hibrid_id and package_type:
-                stock_record = self.env['seed.stock'].search([
-                        ('hibrid_id', '=', hibrid_id),
-                        ('package_type', '=', package_type)
+                stock = self.env["seed.stock"].search([
+                        ("hibrid_id", "=", hibrid_id),
+                        ("package_type", "=", package_type)
                     ],
                     limit=1
                 )
 
-                if stock_record:
-                    stock_record.amount += amount
+                if stock:
+                    stock.amount += amount
+
                 else:
-                    self.env['seed.stock'].create({
-                            'hibrid_id': hibrid_id,
-                            'package_type': package_type,
-                            'amount': amount
+                    self.env["seed.stock"].create({
+                            "hibrid_id": hibrid_id,
+                            "package_type": package_type,
+                            "amount": amount
                         }
                     )
 
         return super().create(vals_list)
 
     def write(self, vals):
-        for rec in self:
-            if 'amount' in vals and 'hibrid_id' not in vals and 'package_type' not in vals:
+        freezed_fieds = ["hibrid_id", "package_type"]
+
+        for field in freezed_fieds:
+            if field in vals:
+                raise ValidationError(
+                    "El campo 'Tipo de presentación' e 'Híbrido' no pueden ser modificados una vez creado el registro. En caso de error en la carga de datos se recomienda crear una nueva orden de entrada."
+                )
+
+        if 'amount' in vals:
+            for rec in self:
                 diff = vals['amount'] - rec.amount
-                self._update_stock(rec.hibrid_id.id, rec.package_type, diff)
+                stock = self.env['seed.stock'].search([
+                        ('hibrid_id', '=', rec.hibrid_id.id),
+                        ('package_type', '=', rec.package_type)
+                    ],
+                    limit=1
+                )
+                if stock:
+                    stock.amount += diff
 
-            elif 'hibrid_id' in vals or 'package_type' in vals:
-                self._update_stock(rec.hibrid_id.id, rec.package_type, -rec.amount)
-
-                new_hibrid = vals.get('hibrid_id', rec.hibrid_id.id)
-                new_type = vals.get('package_type', rec.package_type)
-                new_amount = vals.get('amount', rec.amount)
-
-                self._update_stock(new_hibrid, new_type, new_amount)
-
-        return super(SeedArrivalOrder, self).write(vals)
+        return super().write(vals)
 
     def unlink(self):
         for rec in self:
-            self._update_stock(rec.hibrid_id.id, rec.package_type, -rec.amount)
+            stock = self.env["seed.stock"].search([
+                    ("hibrid_id", "=", rec.hibrid_id.id),
+                    ("package_type", "=", rec.package_type)
+                ],
+                limit=1
+            )
+            stock_check = stock.amount - rec.amount
+            if stock_check < 0:
+                ValidationError("No se puede borrar esta orden de entrada porque a creado ordenes de salida que utilizan el stock de esta orden.")
 
-        return super(SeedArrivalOrder, self).unlink()
+            else:
+                stock.amount -= rec.amount
+
+        return super().unlink()

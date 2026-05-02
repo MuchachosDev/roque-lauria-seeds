@@ -48,11 +48,11 @@ class SeedDepertureOrderItem(models.Model):
                 limit=1
             )
 
-            if not stock or stock.amount < rec.amount:
-                available = stock.amount if stock else 0
+            if not stock or stock.amount < 0:
+                available = (stock.amount + rec.amount) if stock else 0
                 package_type = dict(self._fields['package_type'].selection).get(rec.package_type)
                 raise ValidationError(
-                    f"Stock insuficiente para {rec.hibrid_name} ({package_type}). Disponible: {available}"
+                    f"Stock insuficiente para {rec.hibrid_name} ({package_type}). Cantidad disponible: {available}"
                 )
 
     @api.model_create_multi
@@ -81,12 +81,8 @@ class SeedDepertureOrderItem(models.Model):
                     ],
                     limit=1
                 )
-
                 if stock:
-                    if stock.amount < diff:
-                        raise ValidationError("No hay stock suficiente para aumentar la cantidad.")
-                    else:
-                        stock.amount -= diff
+                    stock.amount -= diff
 
         return super().write(vals)
 

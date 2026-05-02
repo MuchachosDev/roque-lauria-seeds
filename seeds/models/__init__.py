@@ -1,4 +1,5 @@
 from . import (
+    seed_stock,
     seed_arrival_order,
     seed_company,
     seed_destinatary,
